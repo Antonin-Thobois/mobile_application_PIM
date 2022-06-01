@@ -1,6 +1,7 @@
 import { Text, View, StyleSheet } from 'react-native-web';
 import { useState } from 'react';
 import { Form, FormItem } from 'react-native-form-component';
+import React from 'react';
 
 
 const App = (props) => {

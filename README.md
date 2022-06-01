@@ -9,6 +9,7 @@ Nom peut être donner : "Défironnement".
 Initialisation du projet : 
 
 Faire l'installation des dépendances en utilisant la commande suivante : 
-npm install 
+```npm install```
 
-PS: n'oubliez pas d'install expo-cli : npm install expo-cli 
+PS: n'oubliez pas d'install expo-cli : 
+```npm install expo-cli```
