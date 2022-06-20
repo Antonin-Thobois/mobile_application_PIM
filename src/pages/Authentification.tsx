@@ -1,4 +1,4 @@
-import { KeyboardAvoidingView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
+ import { KeyboardAvoidingView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
 import React, { useState } from 'react'
 import { auth } from '../../firebase'
 import { createUserWithEmailAndPassword } from 'firebase/auth'
@@ -23,15 +23,15 @@ const Authentification = (props: Props) => {
         <KeyboardAvoidingView
             style={styles.container}
             behavior="padding"
-        >  
+        >
             <View style={styles.inputContainer}>
-                <TextInput 
+                <TextInput
                     placeholder='Email'
                     value={email}
                     onChangeText={text => setEmail(text)}
                     style={styles.input}
                 />
-                <TextInput 
+                <TextInput
                     placeholder='Password'
                     value={password}
                     onChangeText={text => setPassword(text)}
@@ -54,7 +54,7 @@ const Authentification = (props: Props) => {
                     <Text style={styles.buttonOutlineText}>Register</Text>
                 </TouchableOpacity>
             </View>
-            
+
         </KeyboardAvoidingView>
     )
 }
