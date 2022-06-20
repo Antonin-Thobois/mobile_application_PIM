@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "mobile_application",
-    "slug": "mobile_application",
+    "name": "app-pim",
+    "slug": "app-pim",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
