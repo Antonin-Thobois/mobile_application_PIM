@@ -25,20 +25,28 @@ const Authentification = (props: Props) => {
             behavior="padding"
         >
             <View style={styles.inputContainer}>
+                <Text
+                    style={styles.text}
+                >Email</Text>
                 <TextInput
-                    placeholder='Email'
+                    placeholder='Your email address'
                     value={email}
                     onChangeText={text => setEmail(text)}
                     style={styles.input}
                 />
+                <Text
+                    style={styles.text}
+                >Password</Text>
                 <TextInput
-                    placeholder='Password'
+                    placeholder='Your password'
                     value={password}
                     onChangeText={text => setPassword(text)}
                     style={styles.input}
                     secureTextEntry
                 />
             </View>
+
+            
 
             <View style={styles.buttonContainer}>
                 <TouchableOpacity
@@ -47,9 +55,11 @@ const Authentification = (props: Props) => {
                 >
                     <Text style={styles.buttonText}>Login</Text>
                 </TouchableOpacity>
+                <br/> <br/>
+                <Text style={styles.buttonOutline}>Have a account?</Text>
                 <TouchableOpacity
                     onPress={handleSignUp}
-                    style={[styles.button, styles.buttonOutline]}
+                    style={styles.buttonOutline}
                 >
                     <Text style={styles.buttonOutlineText}>Register</Text>
                 </TouchableOpacity>
@@ -63,15 +73,21 @@ export default Authentification
 
 const styles = StyleSheet.create({
     container:{
+        backgroundColor:'#ECEBE1',
         flex: 1,
         alignItems: 'center',
-        justifyContent: 'center',
     },
     inputContainer:{
+        paddingTop: 40,
         width: '80%'
     },
+    text: {
+        fontSize: 20,
+        color:'#69a88d'
+    },
     input:{
-        backgroundColor: 'white',
+        //backgroundColor:'#69a88d',
+        opacity: 80,
         paddingHorizontal: 15,
         paddingVertical: 10,
         borderRadius: 10,
@@ -84,17 +100,15 @@ const styles = StyleSheet.create({
         marginTop: 40
     },
     button:{
-        backgroundColor: 'green',
+        backgroundColor: '#69a88d',
         width: '100%',
         padding: 15,
         borderRadius: 10,
         alignItems: 'center'
     },
     buttonOutline:{
-        backgroundColor: 'white',
+        color: '#69a88d',
         marginTop: 5,
-        borderColor: 'green',
-        borderWidth: 2
     },
     buttonText:{
         color: 'white',
@@ -102,8 +116,9 @@ const styles = StyleSheet.create({
         fontSize: 16
     },
     buttonOutlineText:{
-        color: 'green',
+        color: '#69a88d',
         fontWeight: '700',
-        fontSize: 16
+        fontSize: 16,
+        textAlign : "center"
     },
 })
