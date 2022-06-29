@@ -1,6 +1,7 @@
  import { KeyboardAvoidingView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
 import React, { useState } from 'react'
-import { auth } from '../../firebase'
+import { auth, usersCol } from '../../firebase'
+import { doc, setDoc } from '@firebase/firestore'
 import { createUserWithEmailAndPassword } from 'firebase/auth'
 
 type Props = {}
@@ -11,8 +12,15 @@ const Authentification = (props: Props) => {
 
     const handleSignUp = () => {
         createUserWithEmailAndPassword(auth, email, password)
-        .then((re) => {
-            console.log(re);
+        .then(async (response) => {
+            console.log(response);
+            const userRef = doc(usersCol, response.user.uid)
+            await setDoc(userRef, {
+                montant_gagne: 0,
+                niveau: 0,
+                nom: "test",
+                prenom: "test"
+            })
         })
         .catch((re) => {
             console.log(re);
@@ -73,12 +81,20 @@ export default Authentification
 
 const styles = StyleSheet.create({
     container:{
+<<<<<<< Updated upstream
         backgroundColor:'#ECEBE1',
+=======
+        backgroundColor: "#ECEBE1",
+>>>>>>> Stashed changes
         flex: 1,
         alignItems: 'center',
     },
     inputContainer:{
+<<<<<<< Updated upstream
         paddingTop: 40,
+=======
+        padding: "50px",
+>>>>>>> Stashed changes
         width: '80%'
     },
     text: {
