@@ -1,6 +1,6 @@
 import logo from "../../../../assets/logo.png";
 import { Image } from "../../atoms";
-import styles from "./styles.css"
+import "./styles.css";
 
 type Props = { 
 }
@@ -8,7 +8,7 @@ type Props = {
 const Logo = (props : Props) => {
     return (
     <Image
-        src = {logo} alt = "Logo Application" 
+        src = {logo} alt = "Logo Application" className="logoStyle"
     />
     )
 }

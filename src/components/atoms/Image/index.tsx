@@ -1,16 +1,14 @@
 import React from "react"
 
 type Props = {
-    src : undefined
+    src : any
     alt : any
-    style? : undefined
+    className : any
 }
 
 const Image = (props : Props) => {
     return(
-    <div>
-        <img src = {props.src} alt = {props.alt} style = {props.style}/>
-    </div>
+    <img src = {props.src} alt = {props.alt} className = {props.className}/>
     )
 }
 
