@@ -14,7 +14,7 @@ export default function App() {
             <Drawer.Screen name="Home" component={Home}/>
             <Drawer.Screen name="Authentification" component={Authentification}/>
         </Drawer.Navigator>
-        
+
       {/*<RootNavigator />*/}
       {/*<StatusBar style="auto" />*/}
     </NavigationContainer>

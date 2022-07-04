@@ -18,7 +18,7 @@ function NotificationScreen({ navigation }) {
         <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
             <Button onPress={() => navigation.navigate("Authentification")} title={"Auth"}/>
         </View>
-        
+
     );
 }
 
