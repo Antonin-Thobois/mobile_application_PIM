@@ -81,20 +81,12 @@ export default Authentification
 
 const styles = StyleSheet.create({
     container:{
-<<<<<<< Updated upstream
-        backgroundColor:'#ECEBE1',
-=======
         backgroundColor: "#ECEBE1",
->>>>>>> Stashed changes
         flex: 1,
         alignItems: 'center',
     },
     inputContainer:{
-<<<<<<< Updated upstream
-        paddingTop: 40,
-=======
         padding: "50px",
->>>>>>> Stashed changes
         width: '80%'
     },
     text: {
