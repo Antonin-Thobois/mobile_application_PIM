@@ -1,29 +1,27 @@
+import { createDrawerNavigator } from "@react-navigation/drawer";
 import React from "react";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { Home, Authentification } from "../pages";
-import { NavBar } from "../components/molecules";
 
 export type RouteParams = {
     Home: undefined;
     Authentification: undefined;
 }
 
-const Stack = createNativeStackNavigator<RouteParams>();
+const RootStack = createDrawerNavigator<RouteParams>();
 
 export const RootNavigator = () => {
     return (
-        <Stack.Navigator>
-            <Stack.Group>
-                <Stack.Screen name="Home" component={Home} options={{
-                    headerTitle: ()=> <NavBar/>,
-                    headerStyle: {
-                        backgroundColor : "#ECEBE1",
-                    }
-                }} />
-                <Stack.Screen name="Authentification" component={Authentification} options={{
-                    animation: "slide_from_right",
-                }} />
-            </Stack.Group>
-        </Stack.Navigator>
+        <RootStack.Navigator initialRouteName="Authentification" screenOptions={({ route }) => ({
+            headerShown: false,
+            tabBarActiveTintColor: '#e67a15',
+            tabBarInactiveTintColor: 'gray',
+          })}>
+            <RootStack.Screen name="Home" component={Home} options={{
+                drawerLabel: "Home",
+            }} />
+            <RootStack.Screen name="Authentification" component={Authentification} options={{
+                drawerLabel: "Authentification",
+            }} />
+        </RootStack.Navigator>
     )
 }
