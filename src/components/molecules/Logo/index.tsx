@@ -1,16 +1,25 @@
-import logo from "../../../../assets/logo.png";
-import { Image } from "../../atoms";
-import "./styles.css";
+import { StyleSheet, Image, View } from 'react-native';
 
 type Props = { 
 }
 
 const Logo = (props : Props) => {
     return (
-    <Image
-        src = {logo} alt = "Logo Application" className="logoStyle"
-    />
+        <View>
+        <Image
+          style={styles.logoStyle}
+          source={require("../../../../assets/logo.png")}
+        />
+      </View>
     )
 }
 
 export default Logo
+
+const styles = StyleSheet.create({
+    logoStyle: {
+        resizeMode: "contain",
+        minHeight: 60,
+        minWidth: 90
+    },
+})

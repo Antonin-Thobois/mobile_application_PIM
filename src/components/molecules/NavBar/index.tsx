@@ -1,20 +1,43 @@
 import React from "react"
 import Logo from "../Logo"
-import H2 from "../../atoms/H2"
-import "./styles.css";
+import { StyleSheet, View, Text } from 'react-native';
 
 type Props = {}
 
 const NavBar = (props: Props) => {
     return (
-        <div className="navBar">
+        <View style={styles.headerStyle}>
             <Logo/>
-            <div>
-                <H2 className="h2Style" text = "Un petit changement est mieux que pas de changement..."></H2>
-                <H2 className="h2_bisStyle" text = "PRÊTS A RELEVER LE DEFI ???"></H2>
-            </div>
-        </div>
+            <View style={styles.phrasesStyle}>
+                <Text style={styles.mantraStyle}>Un petit changement est mieux que pas de changement...</Text>
+                <Text style={styles.acrrocheStyle}>PRÊTS A RELEVER LE DEFI ???</Text>
+            </View>
+        </View>
     )
 }
 
 export default NavBar
+
+const styles = StyleSheet.create({
+    headerStyle: {
+        // display: "flex",
+        justifyContent: "space-around",
+        // alignItems: "flex-start",
+        flexDirection : "row",
+        //flexWrap: "wrap",
+    },
+    phrasesStyle : {
+        marginTop : 20
+    },
+    mantraStyle :{
+        color : "#69a88d",
+        fontSize: 10,
+        fontFamily: "Playfair Display",
+    },
+    acrrocheStyle : {
+        color : "#3E7A6E",
+        fontSize: 10,
+        fontFamily: "Playfair Display",
+    },
+})
+

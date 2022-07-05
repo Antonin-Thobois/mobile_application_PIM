@@ -18,6 +18,7 @@ export const RootNavigator = () => {
                     headerTitle: ()=> <NavBar/>,
                     headerStyle: {
                         backgroundColor : "#ECEBE1",
+
                     }
                 }} />
                 <Stack.Screen name="Authentification" component={Authentification} options={{
