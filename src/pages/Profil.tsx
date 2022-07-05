@@ -1,6 +1,6 @@
 import {
     StyleSheet,
-    Text, TextInput,
+    Text,
     TouchableOpacity,
     View
 } from "react-native";
@@ -28,7 +28,7 @@ const Profil = (props: Props) => {
                 <Text style={styles.Data}>LEDOUX</Text>
             </View>
             <View style={styles.Align}>
-                <Text style={styles.InformationText}>Prenom</Text>
+                <Text style={styles.InformationText}>Prénom</Text>
                 <Text style={styles.Data}>Océane</Text>
             </View>
             <View style={styles.Align}>
@@ -57,7 +57,37 @@ const Profil = (props: Props) => {
                 <Text style={styles.buttonText}>Modification mot de passe</Text>
             </TouchableOpacity>
             </View>
+
+            <View>
+                <Text style={styles.text}>Défis</Text>
+            </View>
+
+            <View style={styles.Align}>
+                <Text style={styles.InformationText}>Nombre de défis réalisés</Text> <br/><br/>
+                <Text style={styles.Data}>14</Text>
+            </View>
+
+            <View style={styles.Align}>
+                <Text style={styles.InformationText}>Montant reversé</Text> <br/><br/>
+                <Text style={styles.Data}>67€</Text>
+            </View>
+
+            <View style={styles.Align}>
+                <Text style={styles.InformationText}>Montant cagnotté</Text> <br/><br/>
+                <Text style={styles.Data}>48€</Text>
+            </View>
+            <View>
+            <TouchableOpacity
+                onPress={() => {}}
+                style={styles.button}
+            >
+                <Text style={styles.buttonText}>Reverser les gains</Text>
+            </TouchableOpacity>
+            </View>
+
         </View>
+
+
     )
 
 }
@@ -77,8 +107,12 @@ const styles = StyleSheet.create({
         paddingBottom:15
     },
     text: {
+        paddingTop:20,
+        paddingBottom:15,
         fontSize: 20,
-        color:'#69a88d'
+        color:'#69a88d',
+        paddingLeft:15,
+        fontWeight:"bold"
     },
     input:{
         //backgroundColor:'#69a88d',
@@ -125,7 +159,9 @@ const styles = StyleSheet.create({
         fontWeight: '700',
         fontSize: 16,
         textAlign : "left",
-        paddingLeft:25
+        alignItems:'center',
+        paddingLeft:25,
+        paddingRight:15
     },
     title: {
         marginTop:15,
