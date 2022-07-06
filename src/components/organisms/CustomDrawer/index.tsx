@@ -11,8 +11,6 @@ type Props = {
 }
 
 const CustomDrawer = (props: Props) => {
-
-    console.log(props.user);
   return (
     <View style={styles.container}>
         <View style={styles.divGene}>
