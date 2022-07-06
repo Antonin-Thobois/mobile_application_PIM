@@ -1,17 +1,17 @@
-import { StyleSheet, Text, View } from 'react-native';
-import React from 'react';
 import TopDrawerNavigation from '../Menu/TopDrawerNavigation';
 import { StyleSheet, Text, View, Pressable, ScrollView } from 'react-native'
 import React from 'react'
-import { useNavigation } from '@react-navigation/native'
-import { NativeStackNavigationProp } from '@react-navigation/native-stack'
-import { RouteParams } from '../navigation/RootNavigator'
 import { RFPercentage, RFValue } from "react-native-responsive-fontsize";
-
+import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
+import { DrawerNavigationProp } from '@react-navigation/drawer';
+import { RouteParams } from '../navigation/RootNavigator';
+import { useNavigation } from '@react-navigation/native';
 
 type Props = {}
 
 const Home = (props: Props) => {
+
+    const navigation = useNavigation<DrawerNavigationProp<RouteParams>>()
 
     return (
         <View style = {styles.container}>
@@ -19,7 +19,8 @@ const Home = (props: Props) => {
             <View style = {styles.blockStyle}>
                 <Text style = {styles.titreStyle}>Défis en cours</Text>
                 <View style = {styles.placeButtonStyle}>
-                    <Pressable style = {styles.buttonStyle}>
+                    <Pressable style = {styles.buttonStyle} onPress={() => navigation.navigate("Challenge")}
+>
                         <Text style = {styles.buttonTitreStyle}>ACCEDER AUX DEFIS</Text>
                     </Pressable>
                 </View>
@@ -63,7 +64,7 @@ const styles = StyleSheet.create({
         borderRadius: 4,
         backgroundColor: '#528F7C',
         color: "#62A188",
-        width : '50%',
+        width: wp ('50%'),
     },
 
     buttonTitreStyle:{
@@ -71,6 +72,7 @@ const styles = StyleSheet.create({
         fontFamily : 'helvetica',
         fontWeight: 'bold',
         letterSpacing: 1,
+        fontSize :RFPercentage (2),
 
     },
 
@@ -91,7 +93,7 @@ const styles = StyleSheet.create({
         borderColor: "#62A188",
         borderRadius: 6,
         marginVertical: 10,
-        marginHorizontal: 20,
+        marginHorizontal: 5,
         paddingLeft: 5,
     }
 })
