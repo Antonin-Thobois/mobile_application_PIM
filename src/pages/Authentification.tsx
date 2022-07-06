@@ -2,6 +2,7 @@
 import React, { useState } from 'react'
 import { auth } from '../../firebase'
 import { createUserWithEmailAndPassword } from 'firebase/auth'
+import TopDrawerNavigation from '../Menu/TopDrawerNavigation'
 
 type Props = {}
 
@@ -20,52 +21,56 @@ const Authentification = (props: Props) => {
     }
 
     return (
-        <KeyboardAvoidingView
-            style={styles.container}
-            behavior="padding"
-        >
-            <View style={styles.inputContainer}>
-                <Text
-                    style={styles.text}
-                >Email</Text>
-                <TextInput
-                    placeholder='Your email address'
-                    value={email}
-                    onChangeText={text => setEmail(text)}
-                    style={styles.input}
-                />
-                <Text
-                    style={styles.text}
-                >Password</Text>
-                <TextInput
-                    placeholder='Your password'
-                    value={password}
-                    onChangeText={text => setPassword(text)}
-                    style={styles.input}
-                    secureTextEntry
-                />
-            </View>
-
-            
-
-            <View style={styles.buttonContainer}>
-                <TouchableOpacity
-                    onPress={() => {}}
-                    style={styles.button}
+        <View style={styles.container}>
+            <TopDrawerNavigation />
+            <View>
+                <KeyboardAvoidingView
+                    style={styles.keyboard}
+                    behavior="padding"
                 >
-                    <Text style={styles.buttonText}>Login</Text>
-                </TouchableOpacity>
-                <br/> <br/>
-                <Text style={styles.buttonOutline}>Have a account?</Text>
-                <TouchableOpacity
-                    onPress={handleSignUp}
-                    style={styles.buttonOutline}
-                >
-                    <Text style={styles.buttonOutlineText}>Register</Text>
-                </TouchableOpacity>
-            </View>
+                    <View style={styles.inputContainer}>
+                        <Text
+                            style={styles.text}
+                        >Email</Text>
+                        <TextInput
+                            placeholder='Your email address'
+                            value={email}
+                            onChangeText={text => setEmail(text)}
+                            style={styles.input}
+                        />
+                        <Text
+                            style={styles.text}
+                        >Password</Text>
+                        <TextInput
+                            placeholder='Your password'
+                            value={password}
+                            onChangeText={text => setPassword(text)}
+                            style={styles.input}
+                            secureTextEntry
+                        />
+                    </View>
 
-        </KeyboardAvoidingView>
+                    
+
+                    <View style={styles.buttonContainer}>
+                        <TouchableOpacity
+                            onPress={() => {}}
+                            style={styles.button}
+                        >
+                            <Text style={styles.buttonText}>Login</Text>
+                        </TouchableOpacity>
+                        <Text style={styles.buttonOutline}>Have a account?</Text>
+                        <TouchableOpacity
+                            onPress={handleSignUp}
+                            style={styles.buttonOutline}
+                        >
+                            <Text style={styles.buttonOutlineText}>Register</Text>
+                        </TouchableOpacity>
+                    </View>
+
+                </KeyboardAvoidingView>
+            </View>
+        </View>
     )
 }
 
@@ -73,8 +78,12 @@ export default Authentification
 
 const styles = StyleSheet.create({
     container:{
+        padding: 16,
+        paddingTop: 40,
         backgroundColor:'#ECEBE1',
-        flex: 1,
+        flex: 1,  
+    },
+    keyboard:{
         alignItems: 'center',
     },
     inputContainer:{
