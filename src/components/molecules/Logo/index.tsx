@@ -8,7 +8,7 @@ const Logo = (props : Props) => {
         <View>
         <Image
           style={styles.logoStyle}
-          source={require("../../../../assets/logo.png")}
+          source={require("../../../assets/logo.png")}
         />
       </View>
     )

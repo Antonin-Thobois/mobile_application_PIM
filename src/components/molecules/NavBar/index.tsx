@@ -32,12 +32,12 @@ const styles = StyleSheet.create({
     mantraStyle :{
         color : "#69a88d",
         fontSize: 10,
-        fontFamily: "Playfair Display",
+        fontFamily: "normal",
     },
     acrrocheStyle : {
         color : "#3E7A6E",
         fontSize: 10,
-        fontFamily: "Playfair Display",
+        fontFamily: "normal",
     },
 })
 
