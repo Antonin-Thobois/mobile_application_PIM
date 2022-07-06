@@ -36,7 +36,8 @@ const CustomDrawer = (props: Props) => {
 const styles = StyleSheet.create({
     container:{
         flex: 1,
-        backgroundColor: "#ECEBE1"
+        backgroundColor: "#ECEBE1",
+        paddingTop: 40
     },
     drawerContent:{
         marginTop: 75,

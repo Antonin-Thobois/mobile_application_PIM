@@ -21,7 +21,19 @@ const RootStack = createDrawerNavigator<RouteParams>();
 
 export const RootNavigator = () => {
     return (
-        <RootStack.Navigator drawerContent={props => <CustomDrawer user={undefined} {...props} />} initialRouteName="Home" screenOptions={{headerShown: false}}>
+        <RootStack.Navigator drawerContent={props => <CustomDrawer user={undefined} {...props} />} 
+            initialRouteName="Home" 
+            screenOptions={{
+                headerShown: false,
+                drawerActiveBackgroundColor: "#528F7C",
+                drawerActiveTintColor: "#ECEBE1",
+                drawerInactiveTintColor: "#7a7a7a",
+                drawerInactiveBackgroundColor: "#96C0AC",
+                drawerLabelStyle:{
+                    marginLeft: -15,
+                    fontSize: 15
+                }
+            }}>
             <RootStack.Screen name="Home" component={Home} options={{
                 drawerLabel: "Acceuil",
                 drawerIcon: ({color = "#7a7a7a"}) => (
@@ -29,7 +41,10 @@ export const RootNavigator = () => {
                 )
             }} />
             <RootStack.Screen name="Authentification" component={Authentification} options={{
-                drawerLabel: "Authentification"
+                drawerLabel: "Authentification",
+                drawerIcon: ({color = "#7a7a7a"}) => (
+                    <TrophyIcon size={22} color={color} /> 
+                )
             }} />
             <RootStack.Screen name="Challenge" component={Challenge} options={{
                 drawerLabel: "Défis",
