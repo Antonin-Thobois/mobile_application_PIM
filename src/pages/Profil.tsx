@@ -5,8 +5,15 @@ import {
     View
 } from "react-native";
 import React, {useState} from "react";
+import {useNavigation} from "@react-navigation/native";
+import {NativeStackNavigationProp} from "@react-navigation/native-stack";
+import {RouteParams} from "../navigation/RootNavigator";
 
 type Props = {
+}
+//const navigation = useNavigation<NativeStackNavigationProp<RouteParams>>();
+const NavToLoginPage = () => {
+    //navigation.navigate("PassworChangeView");
 }
 
 const Profil = (props: Props) => {
@@ -18,7 +25,7 @@ const Profil = (props: Props) => {
 
     return (
         <View style={styles.container}>
-            <View style={styles.Align}>
+            <View>
                 <Text style={styles.title}>
                     VOTRE PROFIL
                 </Text>
@@ -34,28 +41,25 @@ const Profil = (props: Props) => {
                 <Text style={styles.Data}>LEDOUX</Text>
             </View>
             <View style={styles.Align}>
-                <Text style={styles.InformationText}>Prénom</Text>
-                <Text style={[styles.Data, styles.ajustement]}>Océane</Text>
+                <Text style={[styles.InformationText, styles.ajustement]}>Prénom</Text>
+                <Text style={styles.Data}>Océane</Text>
             </View>
             <View style={styles.Align}>
                 <Text style={styles.InformationText}>email</Text>
                 <Text style={styles.Data}>Email</Text>
             </View>
 
-
+            <View style={[styles.Align, styles.ajustement]}>
             <TouchableOpacity
                 onPress={() => {}}
                 style={styles.button}
             >
                 <Text style={styles.buttonText}>Valider les modifications</Text>
             </TouchableOpacity>
+            </View>
 
             <View style={styles.Align}>
-            <TouchableOpacity
-                style={[styles.buttonOutline, styles.Align]}
-            >
                 <Text style={styles.InformationText}>Mot de passe</Text>
-            </TouchableOpacity>
             <TouchableOpacity
                 onPress={() => {}}
                 style={styles.button}
@@ -69,20 +73,20 @@ const Profil = (props: Props) => {
             </View>
 
             <View style={styles.Align}>
-                <Text style={styles.InformationText}>Nombre de défis réalisés</Text> <br/><br/>
-                <Text style={styles.Data}>14</Text>
+                <Text style={styles.InformationText}>Nombre de défis réalisés</Text>
+                <Text style={[styles.Data,styles.buttonDefinir]}>14</Text>
             </View>
 
             <View style={styles.Align}>
-                <Text style={styles.InformationText}>Montant reversé</Text> <br/><br/>
-                <Text style={styles.Data}>67€</Text>
+                <Text style={styles.InformationText}>Montant reversé</Text>
+                <Text style={[styles.Data,styles.buttonDefinir]}>67€</Text>
             </View>
 
             <View style={styles.Align}>
-                <Text style={styles.InformationText}>Montant cagnotté</Text> <br/><br/>
-                <Text style={styles.Data}>48€</Text>
+                <Text style={styles.InformationText}>Montant cagnotté</Text>
+                <Text style={[styles.Data,styles.buttonDefinir]}>48€</Text>
             </View>
-            <View>
+            <View style={[styles.Align, styles.ajustement]}>
             <TouchableOpacity
                 onPress={() => {}}
                 style={styles.button}
@@ -107,7 +111,9 @@ const styles = StyleSheet.create({
         display:"flex",
         flexDirection:'row',
         alignItems:'center',
-        paddingBottom:15
+        paddingBottom:15,
+        justifyContent:'space-between',
+        paddingRight:15
     },
     AlignReverse: {
         display:"flex",
@@ -144,7 +150,6 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         alignItems:'center',
         textAlign:"center",
-        marginLeft:90
     },
     button:{
         marginTop:15,
@@ -161,16 +166,16 @@ const styles = StyleSheet.create({
     buttonText:{
         color: 'white',
         fontWeight: '700',
-        fontSize: 16
+        fontSize: 16,
+        textAlign:"center"
     },
     InformationText:{
         color: '#69a88d',
         fontWeight: '700',
         fontSize: 16,
-        textAlign : "left",
-        alignItems:'center',
         paddingLeft:25,
-        paddingRight:15
+        paddingRight:15,
+        width:'auto'
     },
     title: {
         marginTop:15,
@@ -182,14 +187,11 @@ const styles = StyleSheet.create({
         fontWeight:"bold"
     },
     buttonDefinir: {
-        alignItems: "flex-end",
         backgroundColor: '#3e7a6e',
         borderRadius: 10,
-        marginLeft: 110,
         textAlign: "center",
         width: '20%',
         color:'white',
-        paddingRight: 20
     },
     Niveau: {
         color: '#69a88d',
@@ -200,14 +202,13 @@ const styles = StyleSheet.create({
         width: '30%',
         maxWidth: '50%',
         minWidth:'30%',
-        alignItems:'center'
+        alignItems:'center',
+        marginLeft:10
 
     },
-    ajustement: { 
-        marginLeft: undefined,
-        padding: undefined,
-        textAlign: undefined,
-        width: undefined
+    ajustement: {
+        paddingRight:0,
+        justifyContent:'space-around',
     }
 
 })
