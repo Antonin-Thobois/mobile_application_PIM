@@ -11,6 +11,7 @@ type Props = {
 }
 
 const CustomDrawer = (props: Props) => {
+    console.log(props.state);
   return (
     <View style={styles.container}>
         <View style={styles.divGene}>
@@ -36,16 +37,16 @@ const CustomDrawer = (props: Props) => {
 const styles = StyleSheet.create({
     container:{
         flex: 1,
-        backgroundColor: "#ECEBE1",
-        paddingTop: 40
+        backgroundColor: "#ECEBE1"
     },
     drawerContent:{
-        marginTop: 75,
+        marginTop: 5,
     },
     divGene: {
-        marginTop: 25,
-        padding: 0,
-        alignItems: "center"
+        paddingTop: 65,
+        paddingBottom: 35,
+        alignItems: "center",
+        backgroundColor: "#96C0AC"
     },
     divIcon:{
         borderStyle: "solid",

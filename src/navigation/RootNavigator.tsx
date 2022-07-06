@@ -21,7 +21,7 @@ const RootStack = createDrawerNavigator<RouteParams>();
 
 export const RootNavigator = () => {
     return (
-        <RootStack.Navigator drawerContent={props => <CustomDrawer user={undefined} {...props} />} 
+        <RootStack.Navigator drawerContent={props => <CustomDrawer user={1} {...props} />} 
             initialRouteName="Home" 
             screenOptions={{
                 headerShown: false,
