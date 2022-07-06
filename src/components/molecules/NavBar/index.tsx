@@ -1,6 +1,8 @@
 import React from "react"
 import Logo from "../Logo"
 import { StyleSheet, View, Text } from 'react-native';
+import { RFPercentage, RFValue } from "react-native-responsive-fontsize";
+import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
 type Props = {}
 
@@ -20,24 +22,24 @@ export default NavBar
 
 const styles = StyleSheet.create({
     headerStyle: {
-        // display: "flex",
-        justifyContent: "space-around",
-        // alignItems: "flex-start",
         flexDirection : "row",
-        //flexWrap: "wrap",
+        alignItems: "center"
     },
     phrasesStyle : {
-        marginTop : 20
+        flex: 1,
+        marginLeft : 10,
     },
     mantraStyle :{
         color : "#69a88d",
-        fontSize: 10,
-        fontFamily: "normal",
+        fontFamily: "quicksand",
+        fontWeight : "bold",
+        fontSize: RFPercentage (2),
     },
     acrrocheStyle : {
         color : "#3E7A6E",
-        fontSize: 10,
-        fontFamily: "normal",
+        fontFamily: "quicksand",
+        fontWeight : "bold",
+        fontSize: RFPercentage (2),
     },
 })
 
