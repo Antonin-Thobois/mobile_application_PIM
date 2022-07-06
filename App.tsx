@@ -1,22 +1,12 @@
+import 'react-native-gesture-handler';
 import { NavigationContainer } from '@react-navigation/native';
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet } from 'react-native';
 import { RootNavigator } from './src/navigation/RootNavigator';
+import React from "react";
 
 export default function App() {
   return (
-    <NavigationContainer>
+    <NavigationContainer>        
       <RootNavigator />
-      <StatusBar style="auto" />
     </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor:'#ECEBE1',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
