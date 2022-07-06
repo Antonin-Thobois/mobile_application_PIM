@@ -10,7 +10,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <RootNavigator />
-      < PassworChangeView />
+      <RegistrationView />
       <StatusBar style="auto" />
     </NavigationContainer>
   );

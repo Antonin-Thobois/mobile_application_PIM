@@ -19,14 +19,6 @@ const Home = (props: Props) => {
                 <Text>Home Screen</Text>
                 <Button title='Login' onPress={NavToLoginPage}/>
             </View>
-            <View style = { styles.footer }>
-                <Text style = {{ fontSize: 15 }}> Accueil </Text>
-                <Text style = {{ fontSize: 15 }}> A propos </Text>
-                <Text style = {{ fontSize: 15 }}> Associations </Text>
-                <Text style = {{ fontSize: 15 }}> Donateurs </Text>
-
-            </View>
-            
         </View>
     )
 }
@@ -37,15 +29,5 @@ const styles = StyleSheet.create({
     container:{
         flex: 1,
         backgroundColor : "#ECEBE1",
-    },
-
-    footer: {
-        backgroundColor : '#B0F2B6',
-        justifyContent: 'space-around',
-        alignItems: 'center',
-        flexDirection: 'row',
-        height: 50,
-        
     }
-
 })

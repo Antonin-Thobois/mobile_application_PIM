@@ -1,9 +1,31 @@
-import { KeyboardAvoidingView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
-import React, { useState } from 'react'
-import { auth } from '../../firebase'
-import { createUserWithEmailAndPassword } from 'firebase/auth'
+import React, { useState, Component } from 'react';
+import {
+    KeyboardAvoidingView,
+    StyleSheet,
+    Text,
+    TextInput,
+    TouchableOpacity,
+    View,
+    ScrollView,
+    StatusBar,
+    SafeAreaView
+ } from 'react-native';
 
+ import {
+    Header,
+    LearnMoreLinks,
+    Colors,
+    DebugInstructions,
+    ReloadInstructions
+} from 'react-native/Libraries/NewAppScreen';
+import { auth } from '../../firebase';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { getDatabase, ref, set } from "firebase/database";
+import firebase from 'firebase/compat/app'
+import 'firebase/compat/database'
 type Props = {}
+
+
 
 const RegistrationView = (props: Props) => {
     const [name, setName] = useState('')
@@ -12,8 +34,26 @@ const RegistrationView = (props: Props) => {
     const [password1, setPassword1] = useState('')
     const [password2, setPassword2] = useState('')
 
-    
+    const createUserData = (name: string, firstname: string, email: string, password1: string, password2: string) => {
+        if (password1===password2){
 
+            firebase.database().ref('utilisateurs/').push({
+                name,
+                firstname,
+                email,
+                password1,
+                password2
+            }).then((data)=>{
+                console.log('data', data)
+            }).catch((error)=>{
+                console.log('error', error)
+            })
+        }else {
+            console.log('Your passwords are different!')
+        }
+    }
+
+    
     return (
         <KeyboardAvoidingView
             style={styles.container}
@@ -27,7 +67,7 @@ const RegistrationView = (props: Props) => {
                 <TextInput
                     placeholder='Indiquez votre nom'
                     value={name}
-                    onChangeText={text => setEmail(text)}
+                    onChangeText={text => setName(text)}
                     style={styles.input}
                 />
                 <Text style={styles.text}>Prenom</Text>
@@ -36,7 +76,6 @@ const RegistrationView = (props: Props) => {
                     value={firstname}
                     onChangeText={text => setFirstName(text)}
                     style={styles.input}
-                    secureTextEntry
                 />
                 <Text style={styles.text}>Email</Text>
                 <TextInput
@@ -44,7 +83,6 @@ const RegistrationView = (props: Props) => {
                     value={email}
                     onChangeText={text => setEmail(text)}
                     style={styles.input}
-                    secureTextEntry
                 />
                 <Text style={styles.text}>Mot de passe</Text>
                 <TextInput
@@ -65,6 +103,7 @@ const RegistrationView = (props: Props) => {
             </View>
             <View style={styles.buttonContainer}>
                 <TouchableOpacity
+                    onPress={() => createUserData(name, firstname, email, password1, password2)}
                     style={styles.button}
                 >
                     <Text style={styles.buttonText}>Création du profil</Text>
