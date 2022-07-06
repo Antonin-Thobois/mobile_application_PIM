@@ -10,7 +10,10 @@ type Props = {
 }
 
 const Profil = (props: Props) => {
+    const [prenom, setPrenom] = useState('')
+    const [nom, setNom] = useState('')
     const [email, setEmail] = useState('')
+    const [niveau, setNiveau] = useState('')
     const [password, setPassword] = useState('')
 
     return (
@@ -19,8 +22,11 @@ const Profil = (props: Props) => {
                 <Text style={styles.title}>
                     VOTRE PROFIL
                 </Text>
-                <Text style={styles.InformationText}>Niveau</Text>
-                <Text style={styles.Data}>Définir</Text>
+            </View>
+
+            <View style={styles.AlignReverse}>
+                <Text style={[styles.Data,styles.buttonDefinir]}>à définir</Text>
+                <Text style={[styles.InformationText,styles.Niveau]}>Niveau</Text>
             </View>
 
             <View style={styles.Align}>
@@ -29,7 +35,7 @@ const Profil = (props: Props) => {
             </View>
             <View style={styles.Align}>
                 <Text style={styles.InformationText}>Prénom</Text>
-                <Text style={styles.Data}>Océane</Text>
+                <Text style={[styles.Data, styles.ajustement]}>Océane</Text>
             </View>
             <View style={styles.Align}>
                 <Text style={styles.InformationText}>email</Text>
@@ -86,10 +92,7 @@ const Profil = (props: Props) => {
             </View>
 
         </View>
-
-
     )
-
 }
 
 export default Profil
@@ -106,6 +109,13 @@ const styles = StyleSheet.create({
         alignItems:'center',
         paddingBottom:15
     },
+    AlignReverse: {
+        display:"flex",
+        flexDirection:'row-reverse',
+        alignItems:'center',
+        paddingBottom:15,
+        paddingRight: 25
+    },
     text: {
         paddingTop:20,
         paddingBottom:15,
@@ -115,7 +125,6 @@ const styles = StyleSheet.create({
         fontWeight:"bold"
     },
     input:{
-        //backgroundColor:'#69a88d',
         opacity: 80,
         paddingHorizontal: 25,
         paddingVertical: 10,
@@ -140,7 +149,7 @@ const styles = StyleSheet.create({
     button:{
         marginTop:15,
         backgroundColor: '#69a88d',
-        width: '70%',
+        width: '50%',
         padding: 15,
         borderRadius: 10,
         alignItems: 'center'
@@ -168,7 +177,37 @@ const styles = StyleSheet.create({
         fontSize:28,
         textAlign: "left",
         paddingBottom:20,
-        paddingLeft:25
+        paddingLeft:25,
+        paddingTop:20,
+        fontWeight:"bold"
+    },
+    buttonDefinir: {
+        alignItems: "flex-end",
+        backgroundColor: '#3e7a6e',
+        borderRadius: 10,
+        marginLeft: 110,
+        textAlign: "center",
+        width: '20%',
+        color:'white',
+        paddingRight: 20
+    },
+    Niveau: {
+        color: '#69a88d',
+        fontWeight:"bold",
+        textAlign: "center"
+    },
+    dimension: {
+        width: '30%',
+        maxWidth: '50%',
+        minWidth:'30%',
+        alignItems:'center'
+
+    },
+    ajustement: { 
+        marginLeft: undefined,
+        padding: undefined,
+        textAlign: undefined,
+        width: undefined
     }
 
 })
