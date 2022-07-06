@@ -1,4 +1,5 @@
 import { StyleSheet, Image, View } from 'react-native';
+import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
 type Props = { 
 }
@@ -19,7 +20,7 @@ export default Logo
 const styles = StyleSheet.create({
     logoStyle: {
         resizeMode: "contain",
-        minHeight: 60,
-        minWidth: 90
+        height: hp ('10%'),
+        width: wp ('15%'),
     },
 })
