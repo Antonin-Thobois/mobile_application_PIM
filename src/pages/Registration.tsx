@@ -1,4 +1,4 @@
-import React, { useState, Component } from 'react';
+import React, { useState } from 'react';
 import {
     KeyboardAvoidingView,
     StyleSheet,
@@ -11,19 +11,14 @@ import {
     SafeAreaView
  } from 'react-native';
 
- import {
-    Header,
-    LearnMoreLinks,
-    Colors,
-    DebugInstructions,
-    ReloadInstructions
-} from 'react-native/Libraries/NewAppScreen';
-import { auth } from '../../firebase';
-import { createUserWithEmailAndPassword } from 'firebase/auth';
-import { getDatabase, ref, set } from "firebase/database";
-import firebase from 'firebase/compat/app'
-import 'firebase/compat/database'
+ 
+
+import { auth, usersCol } from '../../firebase'
+import { doc, setDoc } from '@firebase/firestore'
+import { createUserWithEmailAndPassword } from 'firebase/auth'
 type Props = {}
+
+
 
 
 
@@ -34,26 +29,28 @@ const RegistrationView = (props: Props) => {
     const [password1, setPassword1] = useState('')
     const [password2, setPassword2] = useState('')
 
-    const createUserData = (name: string, firstname: string, email: string, password1: string, password2: string) => {
-        if (password1===password2){
+    const createUserData = () => {
+        if (password1==password2) {
+            createUserWithEmailAndPassword(auth, email, password1)
+            .then(async (response) => {
+                console.log(response);
+                const userRef = doc(usersCol, response.user.uid)
 
-            firebase.database().ref('utilisateurs/').push({
-                name,
-                firstname,
-                email,
-                password1,
-                password2
-            }).then((data)=>{
-                console.log('data', data)
-            }).catch((error)=>{
-                console.log('error', error)
+                await setDoc(userRef, {
+                    montant_gagne: 0,
+                    niveau: 0,
+                    nom: name,
+                    prenom: firstname,
+                })
+            })
+            .catch((re) => {
+                console.log(re);
             })
         }else {
-            console.log('Your passwords are different!')
+            console.log("Les deux passwords ne sont pas identiques!")
         }
-    }
+     }
 
-    
     return (
         <KeyboardAvoidingView
             style={styles.container}
@@ -103,7 +100,7 @@ const RegistrationView = (props: Props) => {
             </View>
             <View style={styles.buttonContainer}>
                 <TouchableOpacity
-                    onPress={() => createUserData(name, firstname, email, password1, password2)}
+                    onPress={() => createUserData()}
                     style={styles.button}
                 >
                     <Text style={styles.buttonText}>Création du profil</Text>
