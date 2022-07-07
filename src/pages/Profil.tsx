@@ -1,30 +1,91 @@
 import {
+    ScrollView,
     StyleSheet,
     Text,
     TouchableOpacity,
     View
 } from "react-native";
-import React, {useState} from "react";
-import {useNavigation} from "@react-navigation/native";
-import {NativeStackNavigationProp} from "@react-navigation/native-stack";
-import {RouteParams} from "../navigation/RootNavigator";
+import React, {useEffect, useState} from "react";
+import { auth, usersCol} from '../../firebase'
+import { signInWithEmailAndPassword } from 'firebase/auth'
+import { doc, getDocs, getDoc } from '@firebase/firestore'
 
-type Props = {
-}
 //const navigation = useNavigation<NativeStackNavigationProp<RouteParams>>();
 const NavToLoginPage = () => {
     //navigation.navigate("PassworChangeView");
 }
 
-const Profil = (props: Props) => {
+const Profil = () => {
+    const [uid, setUid] = useState('')
+
     const [prenom, setPrenom] = useState('')
     const [nom, setNom] = useState('')
     const [email, setEmail] = useState('')
     const [niveau, setNiveau] = useState('')
-    const [password, setPassword] = useState('')
+    const [montant, setMontant] = useState('')
+
+    // Enlever pour le profil
+    // signInWithEmailAndPassword(auth, "test4@test.com", "testtest")
+    //     .then((userCredential) => {
+    //         const user = userCredential.user;
+    //         console.log(user)
+    //     })
+    //     .catch((error) => {
+    //         const errorCode = error.code;
+    //         const errorMessage = error.message;
+    //     });
+    // Enlever la fonction setTimeOut
+    // setTimeout(() => {
+    //     const user = auth.currentUser;
+    //     console.log(user)
+    //     // Garder la fonction if pour avoir le uid user
+    //     if(user !== null ) {
+    //         setUid(user.uid);
+    //         setEmail(user.email)
+    //     }
+    // }, 5000)
+
+
+    const user = auth.currentUser;
+    if(user !== null ) {
+        setUid(user.uid);
+        setEmail(user.email)
+    }
+
+    // Vérification de l'affichage uid en console
+    console.log("Mon ID User " + uid)
+    useEffect(() => {
+        const getCurrentUser = async () => {
+            const userDocRef = doc(usersCol,
+                uid)
+            console.log(userDocRef)
+            const userDoc = await getDoc(userDocRef)
+            const userData = userDoc.data()
+            if(userData) {
+                console.log(userData.prenom)
+                setPrenom(userData.prenom)
+                setNom(userData.nom)
+                setNiveau(userData.niveau)
+                setMontant(userData.montant_gagne)
+            }
+        }
+        getCurrentUser()
+    })
+
+    /*
+            Fonction pour récupérer tous les utilisateurs dans la collection "utilisateurs"
+     */
+    // const getUser = async () => {
+    //     const userDocs = await getDocs(usersCol)
+    //     userDocs.docs.forEach((userDoc) => {
+    //         const user = userDoc.data()
+    //         prenom = user.prenom
+    //         nom = user.nom
+    //     })
+    // }
 
     return (
-        <View style={styles.container}>
+        <ScrollView style={styles.container}>
             <View>
                 <Text style={styles.title}>
                     VOTRE PROFIL
@@ -32,21 +93,21 @@ const Profil = (props: Props) => {
             </View>
 
             <View style={styles.AlignReverse}>
-                <Text style={[styles.Data,styles.buttonDefinir]}>à définir</Text>
+                <Text style={[styles.Data,styles.buttonDefinir]}>{niveau}</Text>
                 <Text style={[styles.InformationText,styles.Niveau]}>Niveau</Text>
             </View>
 
             <View style={styles.Align}>
                 <Text style={styles.InformationText}>Nom</Text>
-                <Text style={styles.Data}>LEDOUX</Text>
+                <Text style={styles.Data}>{nom}</Text>
             </View>
             <View style={styles.Align}>
                 <Text style={[styles.InformationText, styles.ajustement]}>Prénom</Text>
-                <Text style={styles.Data}>Océane</Text>
+                <Text style={styles.Data}>{prenom}</Text>
             </View>
             <View style={styles.Align}>
                 <Text style={styles.InformationText}>email</Text>
-                <Text style={styles.Data}>Email</Text>
+                <Text style={styles.Data}>{email}</Text>
             </View>
 
             <View style={[styles.Align, styles.ajustement]}>
@@ -84,7 +145,7 @@ const Profil = (props: Props) => {
 
             <View style={styles.Align}>
                 <Text style={styles.InformationText}>Montant cagnotté</Text>
-                <Text style={[styles.Data,styles.buttonDefinir]}>48€</Text>
+                <Text style={[styles.Data,styles.buttonDefinir]}>{montant}€</Text>
             </View>
             <View style={[styles.Align, styles.ajustement]}>
             <TouchableOpacity
@@ -95,7 +156,7 @@ const Profil = (props: Props) => {
             </TouchableOpacity>
             </View>
 
-        </View>
+        </ScrollView>
     )
 }
 
