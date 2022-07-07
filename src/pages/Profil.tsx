@@ -1,4 +1,5 @@
 import {
+    ScrollView,
     StyleSheet,
     Text,
     TouchableOpacity,
@@ -17,33 +18,39 @@ const NavToLoginPage = () => {
 const Profil = () => {
     const [uid, setUid] = useState('')
 
-    // Enlever pour le profil
-    signInWithEmailAndPassword(auth, "test4@test.com", "testtest")
-        .then((userCredential) => {
-            const user = userCredential.user;
-            console.log(user)
-        })
-        .catch((error) => {
-            const errorCode = error.code;
-            const errorMessage = error.message;
-        });
-    // Enlever la fonction setTimeOut
-    setTimeout(() => {
-        const user = auth.currentUser;
-        console.log(user)
-        // Garder la fonction if pour avoir le uid user
-        if(user !== null ) {
-            setUid(user.uid);
-            setEmail(user.email)
-        }
-    }, 5000)
-
-
     const [prenom, setPrenom] = useState('')
     const [nom, setNom] = useState('')
     const [email, setEmail] = useState('')
     const [niveau, setNiveau] = useState('')
     const [montant, setMontant] = useState('')
+
+    // Enlever pour le profil
+    // signInWithEmailAndPassword(auth, "test4@test.com", "testtest")
+    //     .then((userCredential) => {
+    //         const user = userCredential.user;
+    //         console.log(user)
+    //     })
+    //     .catch((error) => {
+    //         const errorCode = error.code;
+    //         const errorMessage = error.message;
+    //     });
+    // Enlever la fonction setTimeOut
+    // setTimeout(() => {
+    //     const user = auth.currentUser;
+    //     console.log(user)
+    //     // Garder la fonction if pour avoir le uid user
+    //     if(user !== null ) {
+    //         setUid(user.uid);
+    //         setEmail(user.email)
+    //     }
+    // }, 5000)
+
+
+    const user = auth.currentUser;
+    if(user !== null ) {
+        setUid(user.uid);
+        setEmail(user.email)
+    }
 
     // Vérification de l'affichage uid en console
     console.log("Mon ID User " + uid)
@@ -60,7 +67,6 @@ const Profil = () => {
                 setNom(userData.nom)
                 setNiveau(userData.niveau)
                 setMontant(userData.montant_gagne)
-                //email = userData.email
             }
         }
         getCurrentUser()
@@ -79,7 +85,7 @@ const Profil = () => {
     // }
 
     return (
-        <View style={styles.container}>
+        <ScrollView style={styles.container}>
             <View>
                 <Text style={styles.title}>
                     VOTRE PROFIL
@@ -150,7 +156,7 @@ const Profil = () => {
             </TouchableOpacity>
             </View>
 
-        </View>
+        </ScrollView>
     )
 }
 
