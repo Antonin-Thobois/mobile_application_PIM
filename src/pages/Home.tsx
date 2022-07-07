@@ -86,6 +86,8 @@ const styles = StyleSheet.create({
     corpsStyle:{
         color: "#7A7A7A",
         fontFamily: "quicksand",
+        textAlign : 'justify',
+        padding :5,
     },
 
     blockStyle: {

@@ -40,7 +40,7 @@ const TopDrawerNavigation = () => {
 }
 
 const styles = StyleSheet.create({
-  headerStyle: {
+    headerStyle: {
       flexDirection : "row",
       alignItems: "center",
       borderBottomWidth : 1,
