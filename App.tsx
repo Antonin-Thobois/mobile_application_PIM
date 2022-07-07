@@ -1,24 +1,33 @@
+import 'react-native-gesture-handler';
 import { NavigationContainer } from '@react-navigation/native';
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet } from 'react-native';
 import { RootNavigator } from './src/navigation/RootNavigator';
+import React from "react";
+import AppLoading from 'expo-app-loading';
+import { useState } from 'react';
+import { fetchFonts } from './src/assets/fonts/fetchFont';
 import { RegistrationView } from './src/pages/index';
 import { PassworChangeView } from './src/pages/index';
 
 
 export default function App() {
+
+  const [fontLoaded, setfontLoaded] = useState(false);
+
+  if (!fontLoaded) {
+    return (
+      <AppLoading
+      startAsync={fetchFonts}
+      onError={() => console.log("ERROR")}
+      onFinish={() => {
+        setfontLoaded(true);
+       }}
+       />
+    )
+  }
+
   return (
-    <NavigationContainer>
+    <NavigationContainer>        
       <RootNavigator />
     </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor:'#ECEBE1',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
