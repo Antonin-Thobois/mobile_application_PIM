@@ -1,9 +1,10 @@
 import { View, StyleSheet, Text, Pressable } from 'react-native'
 import React from 'react'
-import { DrawerContentScrollView, DrawerItemList, DrawerNavigationProp } from '@react-navigation/drawer';
+import { DrawerContentScrollView, DrawerItemList } from '@react-navigation/drawer';
 import UserIcon from '../../../icons/UserIcon';
-import { RouteParams } from '../../../navigation/RootDrawerNavigator';
 import { useNavigation } from '@react-navigation/native';
+import { StackNavigationProp } from '@react-navigation/stack';
+import { RouteStackParams } from '../../../navigation/RootStackNavigator';
 
 type Props = {
     state: any,
@@ -13,7 +14,7 @@ type Props = {
 }
 
 const CustomDrawer = (props: Props) => {
-    const navigation = useNavigation<DrawerNavigationProp<RouteParams>>()
+    const navigation = useNavigation<StackNavigationProp<RouteStackParams>>()
 
     const handleProfil = () => {
         if(props.user){
