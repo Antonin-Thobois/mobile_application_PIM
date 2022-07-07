@@ -4,7 +4,7 @@ import React from 'react'
 import { RFPercentage, RFValue } from "react-native-responsive-fontsize";
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import { DrawerNavigationProp } from '@react-navigation/drawer';
-import { RouteParams } from '../navigation/RootNavigator';
+import { RouteParams } from '../navigation/RootDrawerNavigator';
 import { useNavigation } from '@react-navigation/native';
 
 type Props = {}

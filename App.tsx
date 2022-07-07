@@ -1,10 +1,11 @@
 import 'react-native-gesture-handler';
 import { NavigationContainer } from '@react-navigation/native';
-import { RootNavigator } from './src/navigation/RootNavigator';
+import { RootDrawerNavigator } from './src/navigation/RootDrawerNavigator';
 import React from "react";
 import AppLoading from 'expo-app-loading';
 import { useState } from 'react';
 import { fetchFonts } from './src/assets/fonts/fetchFont';
+import { RootStackNavigator } from './src/navigation/RootStackNavigator';
 
 export default function App() {
 
@@ -24,7 +25,7 @@ export default function App() {
 
   return (
     <NavigationContainer>        
-      <RootNavigator />
+      <RootStackNavigator />
     </NavigationContainer>
   );
 }
