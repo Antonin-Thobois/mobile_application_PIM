@@ -1,10 +1,8 @@
 import React from 'react'
 import { View, StyleSheet, Text } from 'react-native'
-import { TouchableHighlight } from 'react-native-gesture-handler'
 import { useNavigation } from '@react-navigation/core'
-import DrawerMenuIcon from '../icons/DrawerMenuIcon'
 import { DrawerNavigationProp } from '@react-navigation/drawer'
-import { RouteParams } from '../navigation/RootNavigator'
+import { RouteParams } from '../navigation/RootDrawerNavigator'
 import Logo from "../components/molecules/Logo"
 import { RFPercentage, RFValue } from "react-native-responsive-fontsize";
 
@@ -14,8 +12,7 @@ const TopDrawerNavigation = () => {
 
   return (
     <View style={styles.headerStyle}>
-        <Logo onPress={() => {navigation.openDrawer();
-        }}/>
+        <Logo onPress={() => { navigation.openDrawer(); }}/>
         <View style={styles.phrasesStyle}>
             <Text style={styles.mantraStyle}>Un petit changement est mieux que pas de changement...</Text>
             <Text style={styles.acrrocheStyle}>PRÊTS A RELEVER LE DEFI ???</Text>

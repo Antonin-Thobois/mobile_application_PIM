@@ -1,7 +1,9 @@
-import { View, StyleSheet, Text } from 'react-native'
+import { View, StyleSheet, Text, Pressable } from 'react-native'
 import React from 'react'
-import { DrawerContentScrollView, DrawerItemList } from '@react-navigation/drawer';
+import { DrawerContentScrollView, DrawerItemList, DrawerNavigationProp } from '@react-navigation/drawer';
 import UserIcon from '../../../icons/UserIcon';
+import { RouteParams } from '../../../navigation/RootDrawerNavigator';
+import { useNavigation } from '@react-navigation/native';
 
 type Props = {
     state: any,
@@ -11,22 +13,32 @@ type Props = {
 }
 
 const CustomDrawer = (props: Props) => {
-    console.log(props.state);
+    const navigation = useNavigation<DrawerNavigationProp<RouteParams>>()
+
+    const handleProfil = () => {
+        if(props.user){
+            navigation.navigate("Profil");
+        }else{
+            navigation.navigate("Authentification");
+        }
+    }
   return (
     <View style={styles.container}>
-        <View style={styles.divGene}>
-            <View style={styles.divIcon}>
-                <UserIcon size={75} color="#7A7A7A"/>
-            </View>
-            { props.user ?
-                <View style={styles.divTitle}>
-                    <Text style={styles.title}>Durant Test</Text>
-                    <Text style={styles.title}>durant.test@gmail.com</Text>
+        <Pressable onPress={handleProfil}>
+            <View style={styles.divGene}>
+                <View style={styles.divIcon}>
+                    <UserIcon size={75} color="#7A7A7A"/>
                 </View>
-                :
-                <></>
-            }
-        </View>
+                { props.user ?
+                    <View style={styles.divTitle}>
+                        <Text style={styles.title}>Durant Test</Text>
+                        <Text style={styles.title}>durant.test@gmail.com</Text>
+                    </View>
+                    :
+                    <></>
+                }
+            </View>
+        </Pressable>
         <DrawerContentScrollView {...props} contentContainerStyle={styles.drawerContent}>
             <DrawerItemList {...props}/>
         </DrawerContentScrollView>
