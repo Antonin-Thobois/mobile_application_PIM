@@ -6,23 +6,23 @@ import InformationIcon from "../icons/InformationIcon";
 import PresentIcon from "../icons/PresentIcon";
 import TeamIcon from "../icons/TeamIcon";
 import TrophyIcon from "../icons/TrophyIcon";
-import { Home, Authentification, Challenge, Associations, Donor, Team } from "../pages";
+import { Home, Challenge, Associations, Donor, Team } from "../pages";
 
 export type RouteParams = {
     Profil: undefined;
     Home: undefined;
-    Authentification: undefined;
     Challenge: undefined;
     Associations: undefined;
     Donor: undefined;
     Team: undefined;
+    Root: undefined;
 }
 
 const RootDrawer = createDrawerNavigator<RouteParams>();
 
 export const RootDrawerNavigator = () => {
     return (
-        <RootDrawer.Navigator drawerContent={props => <CustomDrawer user={undefined} {...props} />} 
+        <RootDrawer.Navigator drawerContent={props => <CustomDrawer user={1} {...props} />} 
             initialRouteName="Home" 
             screenOptions={{
                 headerShown: false,
@@ -39,11 +39,6 @@ export const RootDrawerNavigator = () => {
                 drawerLabel: "Acceuil",
                 drawerIcon: ({color = "#7a7a7a"}) => (
                     <HomeIcon size={22} color={color} /> 
-                )
-            }} />
-            <RootDrawer.Screen name="Authentification" component={Authentification} options={{
-                drawerIcon: ({color = "#7a7a7a"}) => (
-                    <TrophyIcon size={22} color={color} /> 
                 )
             }} />
             <RootDrawer.Screen name="Challenge" component={Challenge} options={{

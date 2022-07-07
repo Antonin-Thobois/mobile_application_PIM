@@ -2,7 +2,6 @@
 import React, { useState } from 'react'
 import { auth } from '../../firebase'
 import { createUserWithEmailAndPassword } from 'firebase/auth'
-import TopDrawerNavigation from '../Menu/TopDrawerNavigation'
 
 type Props = {}
 
@@ -22,7 +21,6 @@ const Authentification = (props: Props) => {
 
     return (
         <View style={styles.container}>
-            <TopDrawerNavigation />
             <View>
                 <KeyboardAvoidingView
                     style={styles.keyboard}
