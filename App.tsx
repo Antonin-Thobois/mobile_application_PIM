@@ -10,8 +10,6 @@ export default function App() {
   return (
     <NavigationContainer>
       <RootNavigator />
-      <RegistrationView />
-      <StatusBar style="auto" />
     </NavigationContainer>
   );
 }

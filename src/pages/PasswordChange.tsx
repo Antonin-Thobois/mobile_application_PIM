@@ -1,14 +1,47 @@
 import { KeyboardAvoidingView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
 import React, { useState } from 'react'
 import { auth } from '../../firebase'
-import { createUserWithEmailAndPassword } from 'firebase/auth'
+
+import { updatePassword } from "firebase/auth";
+
+
+
+
+
+
+
 
 type Props = {}
 
 const PassworChangeView = (props: Props) => {
-    const [password1, setPassword1] = useState('')
-    const [password2, setPassword2] = useState('')
-    const [password3, setPassword3] = useState('')
+    const [oldPassword, setOldPassword] = useState('');
+    const [newPassword, setNewPassword] = useState('');
+    const [confirm, setConfirm] = useState('');
+    const user = auth.currentUser;
+
+    const handleChangePassword = () => {
+        if(user){
+            if (oldPassword!=newPassword){
+                if(newPassword===confirm){
+                    updatePassword(user, newPassword).then(() => {
+                        console.log('Mise à jour réussi')
+                      }).catch((error) => {
+                        console.log('erreur', error)
+                      });
+                }else{
+                    console.log('Les deux mots (password et confirm) de passe ne sont pas identiques!')
+                }
+            }else{
+                console.log("L'ancien et le nouveau mot de passe ne peuvent pas etre identiques!")
+            }
+    
+        }else{
+            console.log("Connectez vous d'abord!")
+        }
+
+    }
+    
+    
 
     
 
@@ -24,30 +57,31 @@ const PassworChangeView = (props: Props) => {
                 <Text style={styles.text}>Mot de passe actuel</Text>
                 <TextInput
                     placeholder='Tapez votre mot de passe actuel'
-                    value={password1}
-                    onChangeText={text => setPassword1(text)}
+                    value={oldPassword}
+                    onChangeText={text => setOldPassword(text)}
                     style={styles.input}
                     secureTextEntry
                 />
                 <Text style={styles.text}>Nouveau mot de passe</Text>
                 <TextInput
                     placeholder='Tapez votre mot de passe'
-                    value={password2}
-                    onChangeText={text => setPassword2(text)}
+                    value={newPassword}
+                    onChangeText={text => setNewPassword(text)}
                     style={styles.input}
                     secureTextEntry
                 />
                 <Text style={styles.text}>Confirmation de votre nouveau mot de passe</Text>
                 <TextInput
                     placeholder='Confirmez votre nouveau mot de passe'
-                    value={password3}
-                    onChangeText={text => setPassword3(text)}
+                    value={confirm}
+                    onChangeText={text => setConfirm(text)}
                     style={styles.input}
                     secureTextEntry
                 />
             </View>
             <View style={styles.buttonContainer}>
                 <TouchableOpacity
+                    onPress={() => handleChangePassword()}
                     style={styles.button}
                 >
                     <Text style={styles.buttonText}>Modifier le mot de passe</Text>

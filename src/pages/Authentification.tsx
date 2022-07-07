@@ -1,23 +1,47 @@
  import { KeyboardAvoidingView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
 import React, { useState } from 'react'
 import { auth } from '../../firebase'
-import { createUserWithEmailAndPassword } from 'firebase/auth'
+import { signInWithEmailAndPassword } from 'firebase/auth'
 
+
+import { useNavigation } from '@react-navigation/native'
+import { NativeStackNavigationProp } from '@react-navigation/native-stack'
+import { RouteParams } from '../navigation/RootNavigator'
 type Props = {}
 
 const Authentification = (props: Props) => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
-    const handleSignUp = () => {
-        createUserWithEmailAndPassword(auth, email, password)
-        .then((re) => {
-            console.log(re);
-        })
-        .catch((re) => {
-            console.log(re);
-        })
+    const navigation = useNavigation<NativeStackNavigationProp<RouteParams>>();
+    const NavToRegisterPage = () => {
+        navigation.navigate("Registration");
     }
+
+    const NavToHomePage = () => {
+        navigation.navigate("Home");
+    }
+
+
+    const signInUser = () => {
+        signInWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+            console.log('Bienvenue')
+            const user = userCredential.user;
+            //console.log(user)
+            NavToHomePage()
+        })
+        .catch((error) => {
+            const errorCode = error.code;
+            console.log(errorCode)
+            const errorMessage = error.message;
+            console.log(errorMessage);
+        });
+    
+
+
+    }
+    
 
     return (
         <KeyboardAvoidingView
@@ -50,7 +74,7 @@ const Authentification = (props: Props) => {
 
             <View style={styles.buttonContainer}>
                 <TouchableOpacity
-                    onPress={() => {}}
+                    onPress={signInUser}
                     style={styles.button}
                 >
                     <Text style={styles.buttonText}>Login</Text>
@@ -58,7 +82,7 @@ const Authentification = (props: Props) => {
                 <br/> <br/>
                 <Text style={styles.buttonOutline}>Have a account?</Text>
                 <TouchableOpacity
-                    onPress={handleSignUp}
+                    onPress={NavToRegisterPage}
                     style={styles.buttonOutline}
                 >
                     <Text style={styles.buttonOutlineText}>Register</Text>

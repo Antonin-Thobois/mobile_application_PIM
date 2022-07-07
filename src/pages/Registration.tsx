@@ -12,10 +12,12 @@ import {
  } from 'react-native';
 
  
-
+import { useNavigation } from '@react-navigation/native'
+import { NativeStackNavigationProp } from '@react-navigation/native-stack'
+import { RouteParams } from '../navigation/RootNavigator'
 import { auth, usersCol } from '../../firebase'
 import { doc, setDoc } from '@firebase/firestore'
-import { createUserWithEmailAndPassword } from 'firebase/auth'
+import { createUserWithEmailAndPassword,  } from 'firebase/auth'
 type Props = {}
 
 
@@ -28,7 +30,12 @@ const RegistrationView = (props: Props) => {
     const [email, setEmail] = useState('')
     const [password1, setPassword1] = useState('')
     const [password2, setPassword2] = useState('')
-
+    
+    
+    const navigation = useNavigation<NativeStackNavigationProp<RouteParams>>();
+    const NavToLoginPage = () => {
+        navigation.navigate("Authentification");
+    }
     const createUserData = () => {
         if (password1==password2) {
             createUserWithEmailAndPassword(auth, email, password1)
@@ -42,6 +49,8 @@ const RegistrationView = (props: Props) => {
                     nom: name,
                     prenom: firstname,
                 })
+                NavToLoginPage()
+                
             })
             .catch((re) => {
                 console.log(re);
