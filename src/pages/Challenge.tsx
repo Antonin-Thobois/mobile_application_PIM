@@ -10,18 +10,23 @@ const Challenge = () => {
 
     const [description, setDescription] = useState('')
     const [gain, setGain] = useState('')
-    const [niveau, setNiveau] = useState('')
+    const [exp, setExp] = useState('')
     const [titre, setTitre] = useState('')
+    const [duree, setDuree] = useState('')
 
+    // Récupérer la collection defis de Firestore
     const getDefis = async () => {
         const defisDocs = await getDocs(defisCol)
+        console.log(defisDocs)
         defisDocs.docs.forEach((defisDoc) => {
             const defis = defisDoc.data()
-            console.log(defis)
+            //console.log(defisDocs)
+            console.log("Mon défis "+ defis)
             setDescription(defis.description)
             setGain(defis.gain)
-            setNiveau(defis.niveau)
+            setExp(defis.exp)
             setTitre(defis.titre)
+            setDuree(defis.duree)
         })
     }
     setTimeout(() => {
@@ -35,8 +40,13 @@ const Challenge = () => {
         <ScrollView style = {styles.blockStyle}>
             <View style={styles.Align}>
                 <Text style = {styles.titreStyle}>
-                    Défi du jour
+                    Défi {duree}
                 </Text>
+                {/*Mettre des icones pour chaque texte en-dessous*/}
+                <Text>Exp</Text>
+                <Text>{exp}</Text>
+                <Text>Gain</Text>
+                <Text>{gain}</Text>
             </View>
             <View style={styles.titreDefis}>
                 <Text>{titre}</Text>
@@ -94,6 +104,7 @@ const styles = StyleSheet.create({
         fontWeight:"bold",
         paddingBottom:15,
         paddingTop:15,
+        color: '#7a7a7a'
     },
     buttonStyle:{
         alignItems: 'center',
