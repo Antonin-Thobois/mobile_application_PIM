@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet } from 'react-native'
+import { View, StyleSheet } from 'react-native'
 import React from 'react'
 import TopDrawerNavigation from '../Menu/TopDrawerNavigation'
 import Carousel, {Pagination} from 'react-native-snap-carousel'
