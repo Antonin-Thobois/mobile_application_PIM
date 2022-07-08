@@ -36,8 +36,6 @@
     "react-native-web": "0.17.7",
     "react-navigation": "^4.4.4",
     "react-navigation-drawer": "^2.7.2"
-    "react-native-web": "0.17.7",
-    "tcomb-form-native": "^0.6.20"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",

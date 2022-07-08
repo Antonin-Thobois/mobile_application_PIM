@@ -1,4 +1,4 @@
- import { KeyboardAvoidingView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
+import { KeyboardAvoidingView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
 import React, { useState } from 'react'
 import { auth } from '../../firebase'
 import { signInWithEmailAndPassword } from 'firebase/auth'
@@ -39,43 +39,38 @@ const Authentification = (props: Props) => {
             const errorMessage = error.message;
             console.log(errorMessage);
         });
-    
-
 
     }
     
 
     return (
-        <View style={styles.container}>
-            <TopDrawerNavigation />
-            <View>
-                <KeyboardAvoidingView
-                    style={styles.keyboard}
-                    behavior="padding"
-                >
-                    <View style={styles.inputContainer}>
-                        <Text
-                            style={styles.text}
-                        >Email</Text>
-                        <TextInput
-                            placeholder='Your email address'
-                            value={email}
-                            onChangeText={text => setEmail(text)}
-                            style={styles.input}
-                        />
-                        <Text
-                            style={styles.text}
-                        >Password</Text>
-                        <TextInput
-                            placeholder='Your password'
-                            value={password}
-                            onChangeText={text => setPassword(text)}
-                            style={styles.input}
-                            secureTextEntry
-                        />
-                    </View>
+        <KeyboardAvoidingView
+            style={styles.container}
+            behavior="padding"
+        >
+            <View style={styles.inputContainer}>
+                <Text
+                    style={styles.text}
+                >Email</Text>
+                <TextInput
+                    placeholder='Your email address'
+                    value={email}
+                    onChangeText={text => setEmail(text)}
+                    style={styles.input}
+                />
+                <Text
+                    style={styles.text}
+                >Password</Text>
+                <TextInput
+                    placeholder='Your password'
+                    value={password}
+                    onChangeText={text => setPassword(text)}
+                    style={styles.input}
+                    secureTextEntry
+                />
+            </View>
 
-                    
+            
 
             <View style={styles.buttonContainer}>
                 <TouchableOpacity
@@ -84,7 +79,6 @@ const Authentification = (props: Props) => {
                 >
                     <Text style={styles.buttonText}>Login</Text>
                 </TouchableOpacity>
-                <br/> <br/>
                 <Text style={styles.buttonOutline}>Have a account?</Text>
                 <TouchableOpacity
                     onPress={NavToRegisterPage}
@@ -93,7 +87,9 @@ const Authentification = (props: Props) => {
                     <Text style={styles.buttonOutlineText}>Register</Text>
                 </TouchableOpacity>
             </View>
-        </View>
+
+        </KeyboardAvoidingView>
+
     )
 }
 

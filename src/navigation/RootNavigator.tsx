@@ -6,10 +6,8 @@ import InformationIcon from "../icons/InformationIcon";
 import PresentIcon from "../icons/PresentIcon";
 import TeamIcon from "../icons/TeamIcon";
 import TrophyIcon from "../icons/TrophyIcon";
-import { Home, Authentification, Challenge, Associations, Donor, Team } from "../pages";
+import { Home, Authentification, Challenge, Associations, Donor, Team, RegistrationView, LogOutView} from "../pages";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { Home, Authentification, RegistrationView } from "../pages";
-import { NavBar } from "../components/molecules";
 
 export type RouteParams = {
     Home: undefined;
@@ -19,6 +17,7 @@ export type RouteParams = {
     Donor: undefined;
     Team: undefined;
     Registration: undefined;
+    LogOut: undefined;
 }
 
 const RootStack = createDrawerNavigator<RouteParams>();
@@ -50,6 +49,7 @@ export const RootNavigator = () => {
                     <TrophyIcon size={22} color={color} /> 
                 )
             }} />
+            <RootStack.Screen name="Registration" component={RegistrationView}  />
             <RootStack.Screen name="Challenge" component={Challenge} options={{
                 drawerLabel: "Défis",
                 drawerIcon: ({color = "#7a7a7a"}) => (
@@ -70,6 +70,12 @@ export const RootNavigator = () => {
             }} />
             <RootStack.Screen name="Team" component={Team} options={{
                 drawerLabel: "L'équipe",
+                drawerIcon: ({color = "#7a7a7a"}) => (
+                    <InformationIcon size={22} color={color} /> 
+                )
+            }} />
+            <RootStack.Screen name="LogOut" component={LogOutView} options={{
+                drawerLabel: "Déconnexion",
                 drawerIcon: ({color = "#7a7a7a"}) => (
                     <InformationIcon size={22} color={color} /> 
                 )

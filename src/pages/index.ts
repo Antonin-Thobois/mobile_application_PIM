@@ -6,3 +6,4 @@ export { default as Challenge } from './Challenge';
 export { default as Associations } from './Associations';
 export { default as Donor } from './Donor';
 export { default as Team } from './Team';
+export { default as  LogOutView} from './LogOut';
