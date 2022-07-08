@@ -7,6 +7,7 @@ import { useState } from 'react';
 import { fetchFonts } from './src/assets/fonts/fetchFont';
 import { RootStackNavigator } from './src/navigation/RootStackNavigator';
 
+
 export default function App() {
 
   const [fontLoaded, setfontLoaded] = useState(false);

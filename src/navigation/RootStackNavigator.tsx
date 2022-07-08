@@ -1,12 +1,14 @@
 import { createStackNavigator } from "@react-navigation/stack";
 import React from "react";
-import { Authentification, Home, Profil } from "../pages";
+import { Authentification, Home, PassworChange, Profil, Registration } from "../pages";
 import { RootDrawerNavigator } from "./RootDrawerNavigator";
 
 export type RouteStackParams = {
     Profil: undefined;
     Authentification: undefined;
     RootDrawerNavigation: undefined;
+    Registration: undefined;
+    ChangePassword: undefined;
 }
 
 const RootStack = createStackNavigator<RouteStackParams>();
@@ -26,6 +28,8 @@ export const RootStackNavigator = () => {
             }}/>
             <RootStack.Screen name="Profil" component={Profil} />
             <RootStack.Screen name="Authentification" component={Authentification} />
+            <RootStack.Screen name="Registration" component={Registration} />
+            <RootStack.Screen name="ChangePassword" component={PassworChange} />
         </RootStack.Navigator>
     )
 }

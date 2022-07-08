@@ -1,5 +1,7 @@
 import { createDrawerNavigator } from "@react-navigation/drawer";
+import { signOut } from "firebase/auth";
 import React from "react";
+import { auth } from "../../firebase";
 import { CustomDrawer } from "../components/organisms";
 import HomeIcon from "../icons/HomeIcon";
 import InformationIcon from "../icons/InformationIcon";
@@ -9,7 +11,6 @@ import TrophyIcon from "../icons/TrophyIcon";
 import { Home, Challenge, Associations, Donor, Team } from "../pages";
 
 export type RouteParams = {
-    Profil: undefined;
     Home: undefined;
     Challenge: undefined;
     Associations: undefined;

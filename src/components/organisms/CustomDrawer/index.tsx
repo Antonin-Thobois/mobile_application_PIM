@@ -5,6 +5,7 @@ import UserIcon from '../../../icons/UserIcon';
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { RouteStackParams } from '../../../navigation/RootStackNavigator';
+import { auth } from '../../../../firebase';
 
 type Props = {
     state: any,
@@ -16,8 +17,10 @@ type Props = {
 const CustomDrawer = (props: Props) => {
     const navigation = useNavigation<StackNavigationProp<RouteStackParams>>()
 
+    const user = auth.currentUser;
+
     const handleProfil = () => {
-        if(props.user){
+        if(user){
             navigation.navigate("Profil");
         }else{
             navigation.navigate("Authentification");
@@ -30,10 +33,10 @@ const CustomDrawer = (props: Props) => {
                 <View style={styles.divIcon}>
                     <UserIcon size={75} color="#7A7A7A"/>
                 </View>
-                { props.user ?
+                { user ?
                     <View style={styles.divTitle}>
                         <Text style={styles.title}>Durant Test</Text>
-                        <Text style={styles.title}>durant.test@gmail.com</Text>
+                        <Text style={styles.title}>{user.email}</Text>
                     </View>
                     :
                     <></>
