@@ -1,8 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
-import { getFirestore, CollectionReference, collection, DocumentData } from 'firebase/firestore';
-import {User} from './src/types/users'
+import { getFirestore, collection } from 'firebase/firestore';
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -27,4 +26,5 @@ const createCollection = (collectionName: string) => {
 }
 
 // @ts-ignore
-export const usersCol = createCollection<User>('utilisateurs');
+export const usersCol = createCollection('utilisateurs');
+export const donorCol = createCollection('donateur');

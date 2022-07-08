@@ -49,6 +49,7 @@ const Profil = () => {
     const user = auth.currentUser;
     if(user !== null ) {
         setUid(user.uid);
+        // @ts-ignore
         setEmail(user.email)
     }
 
@@ -85,7 +86,8 @@ const Profil = () => {
     // }
 
     return (
-        <ScrollView style={styles.container}>
+        <View style={styles.container}>
+            <ScrollView>
             <View>
                 <Text style={styles.title}>
                     VOTRE PROFIL
@@ -155,8 +157,8 @@ const Profil = () => {
                 <Text style={styles.buttonText}>Reverser les gains</Text>
             </TouchableOpacity>
             </View>
-
-        </ScrollView>
+            </ScrollView>
+        </View>
     )
 }
 
