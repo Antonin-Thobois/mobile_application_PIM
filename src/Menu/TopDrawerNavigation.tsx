@@ -13,13 +13,13 @@ const TopDrawerNavigation = () => {
   
   switch(route.name){
     case "Home":
-      label = "NaturaDéfi";
+      label = "NaturaDefi";
       break;
     case "Donor":
-      label = "Donateur";
+      label = "Donateurs";
       break;
     case "Team":
-      label = "L'équipe";
+      label = "L'Equipe";
       break;
     case "Challenge":
       label = "Défis";
@@ -54,15 +54,9 @@ const styles = StyleSheet.create({
   },
   mantraStyle :{
       color : "#69a88d",
-      fontFamily: "quicksand",
       fontWeight : "bold",
-      fontSize: RFPercentage (2),
-  },
-  acrrocheStyle : {
-      color : "#3E7A6E",
-      fontFamily: "quicksand",
-      fontWeight : "bold",
-      fontSize: RFPercentage (2),
+      fontSize: RFPercentage (2.8),
+      fontVariant : ['small-caps'],
   },
 })
 
