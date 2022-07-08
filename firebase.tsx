@@ -3,6 +3,7 @@ import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 import { getFirestore, CollectionReference, collection, DocumentData } from 'firebase/firestore';
 import {User} from './src/types/users'
+import {Defis} from "./src/types/defis";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -28,3 +29,5 @@ const createCollection = (collectionName: string) => {
 
 // @ts-ignore
 export const usersCol = createCollection<User>('utilisateurs');
+// @ts-ignore
+export const defisCol = createCollection<Defis>('defi');
