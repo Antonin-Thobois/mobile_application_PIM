@@ -1,5 +1,8 @@
 import { createStackNavigator } from "@react-navigation/stack";
+import { signOut } from "firebase/auth";
 import React from "react";
+import { RFPercentage } from "react-native-responsive-fontsize";
+import { auth } from "../../firebase";
 import { Authentification, Home, PassworChange, Profil, Registration } from "../pages";
 import { RootDrawerNavigator } from "./RootDrawerNavigator";
 
@@ -17,10 +20,13 @@ export const RootStackNavigator = () => {
     return (
         <RootStack.Navigator screenOptions={{
             headerStyle: {
-                backgroundColor: "#96C0AC" 
+                backgroundColor: "#ECEBE1" 
             },
             headerTitleStyle:{
-                color: "#7a7a7a"
+                color : "#69a88d",
+                fontWeight : "bold",
+                fontSize: RFPercentage (2.8),
+                fontVariant : ['small-caps'],
             }
         }}>
             <RootStack.Screen name="RootDrawerNavigation" component={RootDrawerNavigator} options={{
@@ -28,8 +34,8 @@ export const RootStackNavigator = () => {
             }}/>
             <RootStack.Screen name="Profil" component={Profil} />
             <RootStack.Screen name="Authentification" component={Authentification} />
-            <RootStack.Screen name="Registration" component={Registration} />
-            <RootStack.Screen name="ChangePassword" component={PassworChange} />
+            <RootStack.Screen name="Registration" component={Registration} options={{title:"Création d'un profil"}}/>
+            <RootStack.Screen name="ChangePassword" component={PassworChange} options={{title:'Changement de Mot de Passe'}}/>
         </RootStack.Navigator>
     )
 }

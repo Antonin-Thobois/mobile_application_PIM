@@ -12,6 +12,7 @@ import { doc, getDocs, getDoc } from '@firebase/firestore'
 import { useNavigation } from "@react-navigation/core";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { RouteStackParams } from "../navigation/RootStackNavigator";
+import { color } from "react-native-reanimated";
 
 /* //const navigation = useNavigation<NativeStackNavigationProp<RouteParams>>();
 const NavToLoginPage = () => {
@@ -107,7 +108,7 @@ const Profil = () => {
                     <Text style={styles.Data}>{prenom}</Text>
                 </View>
                 <View style={styles.Align}>
-                    <Text style={styles.InformationText}>email</Text>
+                    <Text style={styles.InformationText}>Email</Text>
                     <Text style={styles.Data}>{email}</Text>
                 </View>
 
@@ -126,7 +127,7 @@ const Profil = () => {
                         onPress={navigateToChangePassword}
                         style={styles.button}
                     >
-                        <Text style={styles.buttonText}>Modification mot de passe</Text>
+                        <Text style={styles.buttonText}>Modifier</Text>
                     </TouchableOpacity>
                     </View>
 
@@ -173,7 +174,7 @@ const styles = StyleSheet.create({
         display:"flex",
         flexDirection:'row',
         alignItems:'center',
-        paddingBottom:15,
+        paddingBottom:10,
         justifyContent:'space-between',
         paddingRight:15
     },
@@ -182,15 +183,17 @@ const styles = StyleSheet.create({
         flexDirection:'row-reverse',
         alignItems:'center',
         paddingBottom:15,
-        paddingRight: 25
+        paddingRight: 25,
+        margin: 5,
     },
     text: {
         paddingTop:20,
         paddingBottom:15,
         fontSize: 20,
-        color:'#69a88d',
+        color:'#3E7A6E',
         paddingLeft:15,
-        fontWeight:"bold"
+        fontWeight:"bold", 
+        fontFamily:"asap"
     },
     input:{
         opacity: 80,
@@ -206,27 +209,30 @@ const styles = StyleSheet.create({
         marginTop: 40
     },
     Data:{
-        backgroundColor: '#69a88d',
+        backgroundColor: '#96C0AC',
         width: '60%',
         padding: 15,
         borderRadius: 10,
         alignItems:'center',
         textAlign:"center",
+        fontFamily : "quicksand",
+        color : "#5C5C5C"
     },
     button:{
-        marginTop:15,
+        margin:10,
         backgroundColor: '#69a88d',
         width: '50%',
         padding: 15,
         borderRadius: 10,
-        alignItems: 'center'
+        alignItems: 'center', 
+        flex: 1
     },
     buttonOutline:{
         color: '#69a88d',
         marginTop: 5,
     },
     buttonText:{
-        color: 'white',
+        color: '#ECEBE1',
         fontWeight: '700',
         fontSize: 16,
         textAlign:"center"
@@ -237,7 +243,8 @@ const styles = StyleSheet.create({
         fontSize: 16,
         paddingLeft:25,
         paddingRight:15,
-        width:'auto'
+        width:'auto', 
+        fontFamily : 'asap'
     },
     title: {
         marginTop:15,
@@ -253,7 +260,7 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         textAlign: "center",
         width: '20%',
-        color:'white',
+        color:'#ECEBE1',
     },
     Niveau: {
         color: '#69a88d',

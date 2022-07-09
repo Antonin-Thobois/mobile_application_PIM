@@ -25,7 +25,7 @@ const Authentification = (props: Props) => {
     const signInUser = () => {
         signInWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
-            window.alert('Merci de vous revoir par mis nous');
+            window.alert('Content de vous revoir parmis nous !');
             NavToHomePage()
         })
         .catch((error) => {
@@ -48,16 +48,16 @@ const Authentification = (props: Props) => {
                     style={styles.text}
                 >Email</Text>
                 <TextInput
-                    placeholder='Your email address'
+                    placeholder='Entrez votre email'
                     value={email}
                     onChangeText={text => setEmail(text)}
                     style={styles.input}
                 />
                 <Text
                     style={styles.text}
-                >Password</Text>
+                >Mot de passe</Text>
                 <TextInput
-                    placeholder='Your password'
+                    placeholder='Entrez votre mot de passe'
                     value={password}
                     onChangeText={text => setPassword(text)}
                     style={styles.input}
@@ -72,14 +72,14 @@ const Authentification = (props: Props) => {
                     onPress={signInUser}
                     style={styles.button}
                 >
-                    <Text style={styles.buttonText}>Login</Text>
+                    <Text style={styles.buttonText}>S'identifier</Text>
                 </TouchableOpacity>
-                <Text style={styles.buttonOutline}>Have a account?</Text>
+                <Text style={styles.buttonOutline}>Créer un compte</Text>
                 <TouchableOpacity
                     onPress={NavToRegisterPage}
                     style={styles.buttonOutline}
                 >
-                    <Text style={styles.buttonOutlineText}>Register</Text>
+                    <Text style={styles.buttonOutlineText}>S'enregistrer</Text>
                 </TouchableOpacity>
             </View>
 
@@ -96,6 +96,7 @@ const styles = StyleSheet.create({
         paddingTop: 40,
         backgroundColor:'#ECEBE1',
         flex: 1,  
+        alignItems : "center"
     },
     keyboard:{
         alignItems: 'center',
@@ -106,15 +107,16 @@ const styles = StyleSheet.create({
     },
     text: {
         fontSize: 20,
-        color:'#69a88d'
+        color:'#69a88d', 
+        fontFamily : 'asap'
     },
     input:{
-        //backgroundColor:'#69a88d',
         opacity: 80,
         paddingHorizontal: 15,
         paddingVertical: 10,
         borderRadius: 10,
         marginTop: 5,
+        fontFamily :'quicksand'
     },
     buttonContainer:{
         width: '60%',
@@ -127,21 +129,25 @@ const styles = StyleSheet.create({
         width: '100%',
         padding: 15,
         borderRadius: 10,
-        alignItems: 'center'
+        alignItems: 'center',
+        marginBottom : 20,
     },
     buttonOutline:{
         color: '#69a88d',
         marginTop: 5,
+        fontFamily :'asap'
     },
     buttonText:{
         color: 'white',
         fontWeight: '700',
-        fontSize: 16
+        fontSize: 16,
+        fontFamily :'asap'
     },
     buttonOutlineText:{
         color: '#69a88d',
         fontWeight: '700',
         fontSize: 16,
-        textAlign : "center"
+        textAlign : "center",
+        fontFamily :'asap'
     },
 })
