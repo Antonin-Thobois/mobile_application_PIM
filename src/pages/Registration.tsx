@@ -53,7 +53,6 @@ const RegistrationView = (props: Props) => {
      }
 
     return (
-        <ScrollView>
             <KeyboardAvoidingView
                 style={styles.container}
                 behavior="padding"
@@ -82,7 +81,7 @@ const RegistrationView = (props: Props) => {
                     />
                     <Text style={styles.text}>Mot de passe</Text>
                     <TextInput
-                        placeholder='Tapez un mot de passe'
+                        placeholder='Indiquez un mot de passe'
                         value={password1}
                         onChangeText={text => setPassword1(text)}
                         style={styles.input}
@@ -90,7 +89,7 @@ const RegistrationView = (props: Props) => {
                     />
                     <Text style={styles.text}>Confirmation de votre nouveau mot de passe</Text>
                     <TextInput
-                        placeholder='Confirmer votre mot de passe'
+                        placeholder='Confirmez votre mot de passe'
                         value={password2}
                         onChangeText={text => setPassword2(text)}
                         style={styles.input}
@@ -102,11 +101,10 @@ const RegistrationView = (props: Props) => {
                         onPress={() => createUserData()}
                         style={styles.button}
                     >
-                        <Text style={styles.buttonText}>Création du profil</Text>
+                        <Text style={styles.buttonText}>Création Profil</Text>
                     </TouchableOpacity>
                 </View>       
             </KeyboardAvoidingView>
-        </ScrollView>
     )
 }
 
@@ -121,23 +119,18 @@ const styles = StyleSheet.create({
     inputContainer:{
         paddingTop: 40,
         width: '80%'
-    },
-    text1: {
-        fontSize: 30,
-        fontWeight: 'bold',
-        marginLeft: -300
-
-    },
-   
+    },   
     text: {
         fontSize: 20,
-        color:'#69a88d'
+        color:'#69a88d',
+        fontFamily : 'asap'
     },
     input:{
         opacity: 80,
         paddingVertical: 10,
         borderRadius: 10,
         marginTop: 5,
+        fontFamily : 'quicksand'
     },
     buttonContainer:{
         width: '40%',
@@ -152,21 +145,9 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         alignItems: 'center'
     },
-    buttonOutline:{
-        color: '#69a88d',
-        marginTop: 5,
-    },
     buttonText:{
         color: 'white',
         fontWeight: '700',
         fontSize: 16
-    },
-    buttonOutlineText:{
-        color: '#69a88d',
-        fontWeight: '700',
-        fontSize: 16,
-        textAlign : "center"
-    },
-    
-    
+    }, 
 })

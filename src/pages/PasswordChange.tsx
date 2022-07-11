@@ -5,6 +5,7 @@ import { signOut, updatePassword } from "firebase/auth";
 import { useNavigation } from '@react-navigation/core';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { RouteStackParams } from '../navigation/RootStackNavigator';
+import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
 type Props = {}
 
@@ -106,26 +107,28 @@ const styles = StyleSheet.create({
    
     text: {
         fontSize: 20,
-        color:'#69a88d'
+        color:'#69a88d',
+        fontFamily : "asap"
     },
     input:{
         opacity: 80,
         paddingVertical: 10,
         borderRadius: 10,
         marginTop: 5,
+        fontFamily : 'quicksand'
     },
     buttonContainer:{
         width: '40%',
         justifyContent: 'center',
         alignItems: 'center',
-        marginTop: 40
+        marginTop: 30,
     },
     button:{
         backgroundColor: '#69a88d',
-        width: '100%',
         padding: 15,
         borderRadius: 10,
-        alignItems: 'center'
+        alignItems: 'center',
+        width: wp ('60%'),
     },
     buttonOutline:{
         color: '#69a88d',
@@ -134,13 +137,14 @@ const styles = StyleSheet.create({
     buttonText:{
         color: 'white',
         fontWeight: '700',
-        fontSize: 16
+        fontSize: 16, 
+        fontFamily : "asap"
     },
     buttonOutlineText:{
         color: '#69a88d',
         fontWeight: '700',
         fontSize: 16,
-        textAlign : "center"
+        textAlign : "center",
     },
     
     
