@@ -4,6 +4,8 @@ import React from "react";
 import { RFPercentage } from "react-native-responsive-fontsize";
 import { auth } from "../../firebase";
 import { Authentification, Home, PassworChange, Profil, Registration } from "../pages";
+import { Authentification, Home, Profil } from "../pages";
+import Donate from "../pages/Donate";
 import { RootDrawerNavigator } from "./RootDrawerNavigator";
 
 export type RouteStackParams = {
@@ -12,13 +14,14 @@ export type RouteStackParams = {
     RootDrawerNavigation: undefined;
     Registration: undefined;
     ChangePassword: undefined;
+    Donate: undefined;
 }
 
 const RootStack = createStackNavigator<RouteStackParams>();
 
 export const RootStackNavigator = () => {
     return (
-        <RootStack.Navigator screenOptions={{
+        <RootStack.Navigator initialRouteName="Donate" screenOptions={{
             headerStyle: {
                 backgroundColor: "#ECEBE1" 
             },
@@ -36,6 +39,9 @@ export const RootStackNavigator = () => {
             <RootStack.Screen name="Authentification" component={Authentification} />
             <RootStack.Screen name="Registration" component={Registration} options={{title:"Création d'un profil"}}/>
             <RootStack.Screen name="ChangePassword" component={PassworChange} options={{title:'Changement de Mot de Passe'}}/>
+            <RootStack.Screen name="Donate" component={Donate} options={{
+                headerBackTitleVisible: false
+            }}/>
         </RootStack.Navigator>
     )
 }

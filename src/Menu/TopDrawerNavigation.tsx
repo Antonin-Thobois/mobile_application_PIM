@@ -1,6 +1,6 @@
 import React from 'react'
 import { View, StyleSheet, Text } from 'react-native'
-import { useNavigation, useRoute, useNavigationBuilder } from '@react-navigation/core'
+import { useNavigation, useRoute } from '@react-navigation/core'
 import { DrawerNavigationProp } from '@react-navigation/drawer'
 import { RouteParams } from '../navigation/RootDrawerNavigator'
 import Logo from "../components/molecules/Logo"

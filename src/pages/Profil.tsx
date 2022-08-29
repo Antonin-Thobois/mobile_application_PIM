@@ -49,6 +49,14 @@ const Profil = () => {
     //     }
     // }, 5000)
 
+
+    const user = auth.currentUser;
+    if(user !== null ) {
+        setUid(user.uid);
+        // @ts-ignore
+        setEmail(user.email)
+    }
+
     // Vérification de l'affichage uid en console
     /* console.log("Mon ID User " + uid) */
     useEffect(() => {
@@ -94,6 +102,11 @@ const Profil = () => {
     return (
         <View style={styles.container}>
             <ScrollView>
+            <View>
+                <Text style={styles.title}>
+                    VOTRE PROFIL
+                </Text>
+            </View>
                 <View style={styles.AlignReverse}>
                     <Text style={[styles.Data,styles.buttonDefinir]}>{niveau}</Text>
                     <Text style={[styles.InformationText,styles.Niveau]}>Niveau</Text>
@@ -145,18 +158,23 @@ const Profil = () => {
                     <Text style={[styles.Data,styles.buttonDefinir]}>67€</Text>
                 </View>
 
-                <View style={styles.Align}>
-                    <Text style={styles.InformationText}>Montant cagnotté</Text>
-                    <Text style={[styles.Data,styles.buttonDefinir]}>{montant}€</Text>
-                </View>
-                <View style={[styles.Align, styles.ajustement]}>
-                    <TouchableOpacity
-                        onPress={() => {}}
-                        style={styles.button}
-                    >
-                        <Text style={styles.buttonText}>Reverser les gains</Text>
-                    </TouchableOpacity>
-                </View>
+            <View style={styles.Align}>
+                <Text style={styles.InformationText}>Montant reversé</Text>
+                <Text style={[styles.Data,styles.buttonDefinir]}>67€</Text>
+            </View>
+
+            <View style={styles.Align}>
+                <Text style={styles.InformationText}>Montant cagnotté</Text>
+                <Text style={[styles.Data,styles.buttonDefinir]}>{montant}€</Text>
+            </View>
+            <View style={[styles.Align, styles.ajustement]}>
+            <TouchableOpacity
+                onPress={() => {}}
+                style={styles.button}
+            >
+                <Text style={styles.buttonText}>Reverser les gains</Text>
+            </TouchableOpacity>
+            </View>
             </ScrollView>
         </View>
     )
