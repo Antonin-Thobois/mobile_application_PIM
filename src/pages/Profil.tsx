@@ -12,7 +12,7 @@ import { doc, getDocs, getDoc } from '@firebase/firestore'
 import { useNavigation } from "@react-navigation/core";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { RouteStackParams } from "../navigation/RootStackNavigator";
-import { color } from "react-native-reanimated";
+import { color, cos } from "react-native-reanimated";
 
 /* //const navigation = useNavigation<NativeStackNavigationProp<RouteParams>>();
 const NavToLoginPage = () => {
@@ -20,7 +20,6 @@ const NavToLoginPage = () => {
 } */
 
 const Profil = () => {
-    const [uid, setUid] = useState('')
     const [prenom, setPrenom] = useState('')
     const [nom, setNom] = useState('')
     const [email, setEmail] = useState('')
@@ -28,42 +27,10 @@ const Profil = () => {
     const [montant, setMontant] = useState('')
     const navigation = useNavigation<StackNavigationProp<RouteStackParams>>()
 
-    // Enlever pour le profil
-    // signInWithEmailAndPassword(auth, "test4@test.com", "testtest")
-    //     .then((userCredential) => {
-    //         const user = userCredential.user;
-    //         console.log(user)
-    //     })
-    //     .catch((error) => {
-    //         const errorCode = error.code;
-    //         const errorMessage = error.message;
-    //     });
-    // Enlever la fonction setTimeOut
-    // setTimeout(() => {
-    //     const user = auth.currentUser;
-    //     console.log(user)
-    //     // Garder la fonction if pour avoir le uid user
-    //     if(user !== null ) {
-    //         setUid(user.uid);
-    //         setEmail(user.email)
-    //     }
-    // }, 5000)
-
-
-    const user = auth.currentUser;
-    if(user !== null ) {
-        setUid(user.uid);
-        // @ts-ignore
-        setEmail(user.email)
-    }
-
-    // Vérification de l'affichage uid en console
-    /* console.log("Mon ID User " + uid) */
     useEffect(() => {
         const getCurrentUser = async () => {
             const user = auth.currentUser;
             if(user !== null) {
-                setUid(user.uid);
                 if(user.email){
                     setEmail(user.email);
                 }
@@ -77,7 +44,6 @@ const Profil = () => {
                     setMontant(userData.montant_gagne)
                 }
             }
-            
         }
 
         getCurrentUser()
@@ -99,6 +65,11 @@ const Profil = () => {
         navigation.navigate("ChangePassword");
     }
 
+    const navigateToDonate = () => {
+        navigation.navigate("Donate");
+    }
+
+
     return (
         <View style={styles.container}>
             <ScrollView>
@@ -107,56 +78,51 @@ const Profil = () => {
                     VOTRE PROFIL
                 </Text>
             </View>
-                <View style={styles.AlignReverse}>
-                    <Text style={[styles.Data,styles.buttonDefinir]}>{niveau}</Text>
-                    <Text style={[styles.InformationText,styles.Niveau]}>Niveau</Text>
-                </View>
+            <View style={styles.AlignReverse}>
+                <Text style={[styles.Data,styles.buttonDefinir]}>{niveau}</Text>
+                <Text style={[styles.InformationText,styles.Niveau]}>Niveau</Text>
+            </View>
 
-                <View style={styles.Align}>
-                    <Text style={styles.InformationText}>Nom</Text>
-                    <Text style={styles.Data}>{nom}</Text>
-                </View>
-                <View style={styles.Align}>
-                    <Text style={[styles.InformationText, styles.ajustement]}>Prénom</Text>
-                    <Text style={styles.Data}>{prenom}</Text>
-                </View>
-                <View style={styles.Align}>
-                    <Text style={styles.InformationText}>Email</Text>
-                    <Text style={styles.Data}>{email}</Text>
-                </View>
+            <View style={styles.Align}>
+                <Text style={styles.InformationText}>Nom</Text>
+                <Text style={styles.Data}>{nom}</Text>
+            </View>
+            <View style={styles.Align}>
+                <Text style={[styles.InformationText, styles.ajustement]}>Prénom</Text>
+                <Text style={styles.Data}>{prenom}</Text>
+            </View>
+            <View style={styles.Align}>
+                <Text style={styles.InformationText}>Email</Text>
+                <Text style={styles.Data}>{email}</Text>
+            </View>
 
-                <View style={[styles.Align, styles.ajustement]}>
+            <View style={[styles.Align, styles.ajustement]}>
+            <TouchableOpacity
+                onPress={() => {}}
+                style={styles.button}
+            >
+                <Text style={styles.buttonText}>Valider les modifications</Text>
+            </TouchableOpacity>
+            </View>
+
+            <View style={styles.Align}>
+                <Text style={styles.InformationText}>Mot de passe</Text>
                 <TouchableOpacity
-                    onPress={() => {}}
+                    onPress={navigateToChangePassword}
                     style={styles.button}
                 >
-                    <Text style={styles.buttonText}>Valider les modifications</Text>
+                    <Text style={styles.buttonText}>Modifier</Text>
                 </TouchableOpacity>
                 </View>
 
-                <View style={styles.Align}>
-                    <Text style={styles.InformationText}>Mot de passe</Text>
-                    <TouchableOpacity
-                        onPress={navigateToChangePassword}
-                        style={styles.button}
-                    >
-                        <Text style={styles.buttonText}>Modifier</Text>
-                    </TouchableOpacity>
-                    </View>
+            <View>
+                <Text style={styles.text}>Défis</Text>
+            </View>
 
-                <View>
-                    <Text style={styles.text}>Défis</Text>
-                </View>
-
-                <View style={styles.Align}>
-                    <Text style={styles.InformationText}>Nombre de défis réalisés</Text>
-                    <Text style={[styles.Data,styles.buttonDefinir]}>14</Text>
-                </View>
-
-                <View style={styles.Align}>
-                    <Text style={styles.InformationText}>Montant reversé</Text>
-                    <Text style={[styles.Data,styles.buttonDefinir]}>67€</Text>
-                </View>
+            <View style={styles.Align}>
+                <Text style={styles.InformationText}>Nombre de défis réalisés</Text>
+                <Text style={[styles.Data,styles.buttonDefinir]}>14</Text>
+            </View>
 
             <View style={styles.Align}>
                 <Text style={styles.InformationText}>Montant reversé</Text>
@@ -168,12 +134,12 @@ const Profil = () => {
                 <Text style={[styles.Data,styles.buttonDefinir]}>{montant}€</Text>
             </View>
             <View style={[styles.Align, styles.ajustement]}>
-            <TouchableOpacity
-                onPress={() => {}}
-                style={styles.button}
-            >
-                <Text style={styles.buttonText}>Reverser les gains</Text>
-            </TouchableOpacity>
+                <TouchableOpacity
+                    onPress={navigateToDonate}
+                    style={styles.button}
+                >
+                    <Text style={styles.buttonText}>Reverser les gains</Text>
+                </TouchableOpacity>
             </View>
             </ScrollView>
         </View>

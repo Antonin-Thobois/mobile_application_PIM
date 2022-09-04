@@ -4,7 +4,7 @@ import { auth, donorCol, usersCol } from '../../firebase';
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { RouteStackParams } from '../navigation/RootStackNavigator';
-import { doc, getDoc, getDocs } from 'firebase/firestore';
+import { doc, getDoc, getDocs, setDoc } from 'firebase/firestore';
 import { ITEM_WIDTH } from '../components/molecules/CarouselCardItem';
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import { ScrollView } from 'react-native-gesture-handler';
@@ -56,7 +56,28 @@ const Donate = () => {
   }, [])
 
   const handleRadio = (e: any) => {
-    setSelected(e)
+    setSelected(e);
+  }
+
+  const handleDonate = async (e: any) => {
+    if(selected != 0){
+      if(user !== null) {
+        const userDocRef = doc(usersCol, user.uid)
+        const userDoc = await getDoc(userDocRef)
+        const userData = userDoc.data()
+        let data = {}
+        if(userData) {
+            data = {
+              ...userData,
+              montant_gagne: 0
+            }
+        }
+        await setDoc(userDocRef, data);
+        navigation.navigate("Profil");
+      }
+    }else{
+      window.alert('Veuillez selectionner une association.');
+    }
   }
 
   return (
@@ -91,9 +112,8 @@ const Donate = () => {
               </TouchableOpacity>
               <Text style={styles.titleDonor}>{e.nom}</Text>
             </View>
-            {
-              e.id == selected ?
-              <View>
+            { e.id == selected ?
+              <View key={e.id + "card"}>
                 <View style={styles.cardContainer} key={e.id}>
                   <Image
                     source={{ uri: e.logoUrl }}
@@ -113,7 +133,14 @@ const Donate = () => {
           )
         })
       }
+        <TouchableOpacity
+            onPress={handleDonate}
+            style={styles.button}
+        >
+            <Text style={styles.buttonText}>Faire un don</Text>
+        </TouchableOpacity>
       </ScrollView>
+      
     </View>
   )
 }
@@ -185,11 +212,26 @@ const styles = StyleSheet.create({
     color: "#62A188",
     width: wp ('50%'),
   },
-    buttonTitreStyle:{
+  buttonTitreStyle:{
     color: "#ECEBE1",
     fontFamily : 'helvetica',
     fontWeight: 'bold',
     letterSpacing: 1,
     fontSize : 14,
-},
+  },
+  button:{
+    margin:10,
+    backgroundColor: '#69a88d',
+    width: '50%',
+    padding: 15,
+    borderRadius: 10,
+    alignItems: 'center', 
+    flex: 1
+  },
+  buttonText:{
+      color: '#ECEBE1',
+      fontWeight: '700',
+      fontSize: 16,
+      textAlign:"center"
+  },
 })

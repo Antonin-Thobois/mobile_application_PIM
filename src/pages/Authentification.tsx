@@ -11,6 +11,7 @@ type Props = {}
 const Authentification = (props: Props) => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+    const [messError, setMessError] = useState('')
 
     const navigation = useNavigation<NativeStackNavigationProp<RouteStackParams>>();
     const NavToRegisterPage = () => {
@@ -30,9 +31,10 @@ const Authentification = (props: Props) => {
         })
         .catch((error) => {
             const errorCode = error.code;
-            console.log(errorCode)
+            console.log(errorCode);
             const errorMessage = error.message;
             console.log(errorMessage);
+            setMessError(errorMessage);
         });
 
     }
@@ -43,6 +45,7 @@ const Authentification = (props: Props) => {
             style={styles.container}
             behavior="padding"
         >
+            <Text>{messError}</Text>
             <View style={styles.inputContainer}>
                 <Text
                     style={styles.text}
@@ -149,5 +152,5 @@ const styles = StyleSheet.create({
         fontSize: 16,
         textAlign : "center",
         fontFamily :'asap'
-    },
+    }
 })

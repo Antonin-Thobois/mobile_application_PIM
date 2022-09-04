@@ -3,6 +3,7 @@ import { signOut } from "firebase/auth";
 import React from "react";
 import { auth } from "../../firebase";
 import { CustomDrawer } from "../components/organisms";
+import DoorIcon from "../icons/DoorIcon";
 import HomeIcon from "../icons/HomeIcon";
 import InformationIcon from "../icons/InformationIcon";
 import PresentIcon from "../icons/PresentIcon";
@@ -22,8 +23,9 @@ export type RouteParams = {
 const RootDrawer = createDrawerNavigator<RouteParams>();
 
 export const RootDrawerNavigator = () => {
+    let user = auth.currentUser;
     return (
-        <RootDrawer.Navigator drawerContent={props => <CustomDrawer user={1} {...props} />} 
+        <RootDrawer.Navigator drawerContent={props => <CustomDrawer {...props} />} 
             initialRouteName="Home" 
             screenOptions={{
                 headerShown: false,
@@ -37,7 +39,7 @@ export const RootDrawerNavigator = () => {
                 }
             }}>
             <RootDrawer.Screen name="Home" component={Home} options={{
-                drawerLabel: "Acceuil",
+                drawerLabel: "Accueil",
                 drawerIcon: ({color = "#7a7a7a"}) => (
                     <HomeIcon size={22} color={color} /> 
                 )
@@ -66,6 +68,7 @@ export const RootDrawerNavigator = () => {
                     <InformationIcon size={22} color={color} /> 
                 )
             }} />
+            
         </RootDrawer.Navigator>
     )
 }

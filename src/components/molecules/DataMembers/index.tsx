@@ -15,7 +15,7 @@ const data = [
     },
     {
       firstname: "Antonin",
-      mantra: "Les pandas, ce n'est qu'une invention!!!",
+      mantra: "C'est en sciant que Léonard devint scie.",
       author: "Lui-même",
       photo: require('../../../assets/teamImage/Antonin.png'),
     },
